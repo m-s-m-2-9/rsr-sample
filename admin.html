@@ -1,127 +1,494 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSR Core Hub Workspace Dashboard Panel</title>
-    <style>
-        body { background: #0b0f19; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 50px 20px; }
-        .admin-canvas-frame { max-width: 900px; margin: 0 auto; background: #1e293b; padding: 45px; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-        h1 { font-size: 26px; color: #f8fafc; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.5px; }
-        p { color: #94a3b8; font-size: 14px; margin-bottom: 40px; }
-        .segment-block { border-top: 1px solid #334155; padding-top: 30px; margin-top: 30px; }
-        .segment-block h2 { font-size: 15px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; font-weight: 600; }
-        .input-wrapper-node { margin-bottom: 22px; }
-        label { display: block; font-size: 13px; font-weight: 500; color: #cbd5e1; margin-bottom: 8px; }
-        input[type="text"], textarea { width: 100%; background: #0f172a; border: 1px solid #475569; padding: 14px; border-radius: 4px; color: #ffffff; font-size: 14px; transition: border-color 0.2s ease; }
-        input[type="text"]:focus, textarea:focus { border-color: #38bdf8; outline: none; }
-        .commit-sync-btn { background: #2563eb; color: #ffffff; border: none; width: 100%; padding: 18px; font-size: 14px; font-weight: 700; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s ease; margin-top: 20px; }
-        .commit-sync-btn:hover { background: #1d4ed8; }
-        .notification-toast { position: fixed; bottom: 30px; right: 30px; background: #10b981; color: #ffffff; padding: 14px 28px; border-radius: 4px; font-size: 14px; font-weight: 600; display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-    </style>
-</head>
-<body>
+/* ======================================================================
+   RSR FAMILY STORE — ADMIN CONTROL FILE
+   ======================================================================
+   HEY THERE! 👋 This is the ONLY file you should need to edit.
 
-    <div class="admin-canvas-frame">
-        <h1>RSR Core Hub Workspace Dashboard</h1>
-        <p>Modify non-technical content data. Save changes to update your luxury storefront view instantly.</p>
+   Everything on the website — text, pages, products, photos, links,
+   contact details, footer, social icons — is controlled from THIS file.
 
-        <form id="admin-panel-form">
-            <div class="segment-block">
-                <h2>1. Layout Headers & Announcements</h2>
-                <div class="input-wrapper-node">
-                    <label>Sleek Endless Luxury Marquee Banner Text Content String</label>
-                    <input type="text" id="marquee" value="Exclusive Festive Collections Now Live • Wholesale Price @ Retail Showroom • Premium Tailoring & Luxury Apparel">
-                </div>
-            </div>
+   HOW TO EDIT SAFELY:
+   1. Only change the text BETWEEN quotes "like this" or 'like this'.
+   2. Do NOT delete commas (,) or curly braces { } or square brackets [ ].
+   3. Do NOT remove the quote marks around text.
+   4. Prices are numbers WITHOUT quotes and WITHOUT commas/₹ symbols.
+      Example: price: 18500   (NOT "18,500" and NOT "₹18500")
+   5. Image links (img / image) must be full https:// links to images.
+   6. After editing, just save the file and refresh the website.
+   7. If something breaks, undo your last change — most issues happen
+      from a missing comma or an extra/missing quote mark.
 
-            <div class="segment-block">
-                <h2>2. Welcome View Layout Configurations</h2>
-                <div class="input-wrapper-node">
-                    <label>Subheading Tag Badge</label>
-                    <input type="text" id="homeTag" value="Wholesale Price @ Retail Showroom">
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Main Showcase Headline Title</label>
-                    <input type="text" id="homeTitle" value="The Ultimate Heritage Luxury Experience">
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Description Narrative Text Block</label>
-                    <textarea id="homeDesc" rows="3">Step into the absolute standard of fine luxury garments. Discover exquisite masterwork catalog collections tailored completely to look magnificent across your landmark celebratory occasions.</textarea>
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Welcome View Main Display Image URL Asset Path</label>
-                    <input type="text" id="imgHome" value="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80">
-                </div>
-            </div>
+   SECTIONS IN THIS FILE:
+   A) SITE-WIDE SETTINGS (brand name, marquee ticker text)
+   B) NAVIGATION MENU (reorder pages, rename, show/hide)
+   C) PAGE TEXT (headlines & descriptions for every page)
+   D) CONTACT INFO (phone, email, address)
+   E) FOOTER TEXT
+   F) SOCIAL MEDIA LINKS (WhatsApp, Instagram, Facebook, Google Maps)
+   G) PRODUCT CATALOG (all products shown across all pages)
+   ====================================================================== */
 
-            <div class="segment-block">
-                <h2>3. Production Category Real Images Override</h2>
-                <div class="input-wrapper-node">
-                    <label>Pure Silk Sarees Grid Variant Item 01 Image URL Link</label>
-                    <input type="text" id="imgSilk1" value="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80">
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Brocade Silk Sarees Grid Variant Item 02 Image URL Link</label>
-                    <input type="text" id="imgSilk2" value="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80">
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Imperial Men Suits Custom Blazer Variant Item 01 Image URL Link</label>
-                    <input type="text" id="imgMen1" value="https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80">
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Traditional Sherwani Men Suit Variant Item 02 Image URL Link</label>
-                    <input type="text" id="imgMen2" value="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80">
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Designer Bridal Women Wear Variant Item 01 Image URL Link</label>
-                    <input type="text" id="imgWomen1" value="https://images.unsplash.com/photo-1583391265517-35bbdba01229?auto=format&fit=crop&w=600&q=80">
-                </div>
-                <div class="input-wrapper-node">
-                    <label>Flagship About Heritage Showroom Section Main Image URL Link</label>
-                    <input type="text" id="imgAbout" value="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80">
-                </div>
-            </div>
 
-            <button type="button" class="commit-sync-btn" onclick="commitWorkspaceSynchronizationData()">Sync Workspace Changes</button>
-        </form>
-    </div>
+/* ======================================================================
+   A) SITE-WIDE SETTINGS
+   ====================================================================== */
+window.RSR_CONFIG = {
 
-    <div class="notification-toast" id="admin-toast">Data Synchronized Successfully!</div>
+    brand: {
+        // Big bold letters in the top-left logo
+        logoMain: "RSR",
+        // Small subtitle text under the logo
+        logoSub: "Family Store",
+        // Browser tab title
+        pageTitle: "RSR Luxury Store & Saree Palace | Heritage Omnichannel Portal"
+    },
 
-    <script>
-        function commitWorkspaceSynchronizationData() {
-            const structuralConfigData = {
-                marquee: document.getElementById('marquee').value,
-                homeTag: document.getElementById('homeTag').value,
-                homeTitle: document.getElementById('homeTitle').value,
-                homeDesc: document.getElementById('homeDesc').value,
-                imgHome: document.getElementById('imgHome').value,
-                imgSilk1: document.getElementById('imgSilk1').value,
-                imgSilk2: document.getElementById('imgSilk2').value,
-                imgMen1: document.getElementById('imgMen1').value,
-                imgMen2: document.getElementById('imgMen2').value,
-                imgWomen1: document.getElementById('imgWomen1').value,
-                imgAbout: document.getElementById('imgAbout').value
-            };
-            
-            localStorage.setItem('rsr_luxury_config', JSON.stringify(structuralConfigData));
-            
-            const toastNode = document.getElementById('admin-toast');
-            toastNode.style.display = 'block';
-            setTimeout(() => { toastNode.style.display = 'none'; }, 2500);
+    // The scrolling text strip at the very top of the page.
+    // You can use ✨ or other symbols. Keep it as one long sentence.
+    marqueeText: "✨ Welcome to RSR Family Store: Wholesale Prices directly at our Flagship Retail Showroom Canvas. ✨ Pure Silk Sarees, Bespoke Menswear & Premium Women Couture Elements.",
+
+
+    /* ==================================================================
+       B) NAVIGATION MENU
+       ==================================================================
+       This controls the menu links at the top of the website
+       (and inside the mobile menu).
+
+       - "label"  = the text people see in the menu
+       - "view"   = DO NOT CHANGE THIS — it links to the matching page
+       - "enabled" = true (show this link) or false (hide this link)
+
+       REORDER PAGES: Simply cut-and-paste an entire { ... } block to a
+       new position in the list. The website will follow this order.
+
+       HIDE A PAGE: Change "enabled: true" to "enabled: false" for that
+       page. It will disappear from the menu (the page itself still
+       exists, it just won't be linked in the navigation).
+
+       Available "view" values (do not rename these):
+       home, curated, sarees, womens, mens, shop, tailored, blog, about, contact
+       ================================================================== */
+    navigation: [
+        { label: "Welcome",      view: "home",    enabled: true },
+        { label: "Offers",       view: "curated", enabled: true },
+        { label: "Sarees",       view: "sarees",  enabled: true },
+        { label: "Womens Wear",  view: "womens",  enabled: true },
+        { label: "Mens Wear",    view: "mens",    enabled: true },
+        { label: "Shop Online",  view: "shop",    enabled: true },
+        { label: "Tailored Studio", view: "tailored", enabled: true },
+        { label: "Blog",         view: "blog",    enabled: true },
+        { label: "About",        view: "about",   enabled: true },
+        { label: "Contact",      view: "contact", enabled: true }
+    ],
+
+
+    /* ==================================================================
+       C) PAGE TEXT
+       ==================================================================
+       Edit the headline ("tag"/"title") and description ("desc") for
+       every page. For Home and About you can also change the photo
+       by replacing "image" with a new https:// image link.
+       ================================================================== */
+    pagesText: {
+
+        // ---- HOME PAGE (the very first page visitors see) ----
+        home: {
+            tag:   "Wholesale Price @ Retail Showroom",
+            title: "The Ultimate Heritage Luxury Experience",
+            desc:  "Step into the absolute standard of fine luxury garments. Discover exquisite masterwork catalog collections tailored completely to look magnificent across your landmark celebratory occasions.",
+            // Main homepage photo (right-hand large image)
+            image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80"
+        },
+
+        // ---- ABOUT PAGE ----
+        about: {
+            title: "Curating High-End Textile Perfection",
+            desc:  "RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.",
+            // About page photo
+            image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
+        },
+
+        // ---- OFFERS PAGE ----
+        offers: {
+            title: "Exclusive Store Offers",
+            desc:  "Premium value choices optimized across wholesale production lines directly for our shoppers."
+        },
+
+        // ---- SAREES PAGE ----
+        sarees: {
+            title: "Heritage Saree Palace",
+            desc:  "Pure Kanchipuram, Banarasi zari brocades, and luxury wedding statements crafted across generations."
+        },
+
+        // ---- WOMEN'S WEAR PAGE ----
+        womens: {
+            title: "Designer Women's Couture",
+            desc:  "Elegant hand-embroidered bridal lehengas, festive suits, and contemporary masterwork fashion statements."
+        },
+
+        // ---- MEN'S WEAR PAGE ----
+        mens: {
+            title: "Premium Men's Collections",
+            desc:  "Imperial custom-tailored suits, signature farewell blazers, and classic traditional luxury sherwanis."
+        },
+
+        // ---- SHOP ONLINE PAGE ----
+        shop: {
+            title: "Omnichannel Digital Showroom",
+            desc:  "Reserve elite pieces securely. Pick up items inside our flagship store or select direct door delivery options."
+        },
+
+        // ---- TAILORED STUDIO PAGE ----
+        tailored: {
+            title: "Bespoke Tailoring & Design Studio",
+            desc:  "Customize your heritage outfit from scratch. Input precise body dimensions or schedule an exclusive showroom fitting appointment session."
+        },
+
+        // ---- BLOG PAGE ----
+        blog: {
+            title: "The RSR Style Journal",
+            desc:  "Insider reports on authentic textile matching, bridal saree trends, and bespoke gentleman suit parameters."
+        },
+
+        // ---- CONTACT PAGE ----
+        contact: {
+            title: "Establish Contact Protocols",
+            desc:  "Reach out directly to verify fit layouts, track items, or request direct wedding consultancy suites."
+        },
+
+        // ---- CHECKOUT PAGE ----
+        checkout: {
+            title: "Finalize Checkout Manifest",
+            desc:  "Complete execution parameters. Pay upon store collection pickup or choose home dispatch delivery options."
         }
+    },
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const cachedArrayString = localStorage.getItem('rsr_luxury_config');
-            if (cachedArrayString) {
-                const objectParsed = JSON.parse(cachedArrayString);
-                Object.keys(objectParsed).forEach(key => {
-                    const inputFieldElement = document.getElementById(key);
-                    if (inputFieldElement) inputFieldElement.value = objectParsed[key];
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+
+    /* ==================================================================
+       D) CONTACT INFO (shown on the Contact page)
+       ================================================================== */
+    contactInfo: {
+        phone:   "08041156897 / 08041162825",
+        email:   "info@rsrsilksareepalace.com",
+        address: "61, Besides St. Pius Church, Kammanahalli Main Rd, Bangalore - 560084, Karnataka, India"
+    },
+
+
+    /* ==================================================================
+       E) FOOTER TEXT (bottom of every page)
+       ================================================================== */
+    footer: {
+        left:  "© 2026 RSR Family Store & Saree Palace. All Rights Reserved. Optimized Architectural Layout Canvas.",
+        right: "Designed with Pride for Bengaluru Luxury Retail Landscapes."
+    },
+
+
+    /* ==================================================================
+       F) SOCIAL MEDIA LINKS
+       ==================================================================
+       Paste your real links here (replace the text inside the quotes).
+       Leave the WhatsApp number format as: https://wa.me/91XXXXXXXXXX
+       (country code + number, no spaces, no + sign, no dashes)
+       ================================================================== */
+    social: {
+        whatsapp:  "https://wa.me/9108041156897",
+        instagram: "https://www.instagram.com/",
+        facebook:  "https://www.facebook.com/",
+        maps:      "https://maps.app.goo.gl/96uGscxby2wPcoQ9A"
+    }
+};
+
+
+
+/* ======================================================================
+   G) PRODUCT CATALOG
+   ======================================================================
+   This is where ALL products across the whole website live.
+
+   HOW PRODUCTS WORK:
+   - Every product is one { ... } block.
+   - "id"     = a short unique code, never repeat the same id twice
+                across the ENTIRE file (e.g. "sr9", "wm5", "mn7")
+   - "name"   = product title shown on the card
+   - "price"  = number only, no symbols (e.g. 18500). For blog posts,
+                use text like "Read Guide" instead.
+   - "gender" = "women", "men", or "kid" (used by the Shop Online filters)
+   - "type"   = one of: saree, lehenga, blazer, formal, semi-formal,
+                accessories (used by the Shop Online filters)
+   - "desc"   = short italic description text on the card
+   - "img"    = full https:// image link. Placeholder images are
+                provided below — replace with your real product photos
+                whenever ready (just swap the link, keep the quotes).
+
+   WHERE PRODUCTS APPEAR:
+   - saareCatalog        -> Sarees page (sarees ONLY)
+   - womensCatalog       -> Women's Wear page (women's couture/lehengas
+                             ONLY — no sarees here, keeps pages clean)
+   - mensCatalog         -> Men's Wear page (men's apparel ONLY)
+   - offersCatalog       -> Offers / Exclusive Deals page
+   - blogCatalog         -> Blog / Style Journal page
+   - shopCatalog (auto)  -> Shop Online page automatically combines
+                             EVERYTHING below (sarees + womens + mens +
+                             kids + accessories) so the filters work
+                             across the full inventory. You normally
+                             do NOT need to edit shopCatalog directly.
+
+   ADD A NEW PRODUCT:
+   - Copy an existing { ... } block (including the comma after it),
+     paste it where you want, then change id/name/price/desc/img.
+
+   REMOVE A PRODUCT:
+   - Delete its entire { ... } block, including the trailing comma.
+     (If it's the LAST item in a list, make sure the item before it
+     does NOT have a trailing comma after you delete the last one.)
+   ====================================================================== */
+
+(function buildCatalog() {
+
+    /* ------------------------------------------------------------
+       SAREES — shown ONLY on the Sarees page
+       ------------------------------------------------------------ */
+    const sareesCatalog = [
+        { id: 'sr1', name: 'Varanasi Brocade Pure Kanchipuram Silk Saree', price: 18500, gender: 'women', type: 'saree',
+          desc: 'Woven with real zari mapping lines across classic south silk weaves.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr2', name: 'Crimson Heritage Wedding Silk Masterpiece', price: 26000, gender: 'women', type: 'saree',
+          desc: 'High class elite designer bridal saree for milestone celebratory settings.',
+          img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr3', name: 'Royal Banarasi Zari Brocade Heritage Saree', price: 22500, gender: 'women', type: 'saree',
+          desc: 'Intricate gold thread brocade work spanning the full pallu canvas.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr4', name: 'Emerald Kanjivaram Temple Border Silk Saree', price: 24000, gender: 'women', type: 'saree',
+          desc: 'Temple motif borders woven with traditional checkered body patterns.',
+          img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr5', name: 'Ivory Tussar Silk Hand-Painted Heritage Saree', price: 19800, gender: 'women', type: 'saree',
+          desc: 'Hand-painted motif detailing over premium tussar silk canvas.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr6', name: 'Maroon Pattu Silk Bridal Statement Saree', price: 27500, gender: 'women', type: 'saree',
+          desc: 'Dense zari weaving across the entire drape for grand wedding settings.',
+          img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr7', name: 'Golden Mysore Silk Festive Heritage Saree', price: 21000, gender: 'women', type: 'saree',
+          desc: 'Lightweight pure silk drape finished with a rich golden zari border.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr8', name: 'Sapphire Blue Kanchipuram Wedding Silk Saree', price: 25500, gender: 'women', type: 'saree',
+          desc: 'Vivid contrast pallu woven with classic temple zari edging.',
+          img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr9', name: 'Rani Pink Organza Silk Heritage Statement Saree', price: 17500, gender: 'women', type: 'saree',
+          desc: 'Sheer organza weave layered with delicate sequence embroidery.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr10', name: 'Heritage Dual-Tone Zari Wedding Silk Saree', price: 23500, gender: 'women', type: 'saree',
+          desc: 'Dual tone weaving technique creating a shimmering color-shift effect.',
+          img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr11', name: 'Classic Kasavu Gold Border Festive Silk Saree', price: 20500, gender: 'women', type: 'saree',
+          desc: 'Traditional cream base finished with a bold pure gold border canvas.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'sr12', name: 'Imperial Magenta Silk Reception Statement Saree', price: 28500, gender: 'women', type: 'saree',
+          desc: 'Heavy reception-grade silk with elaborate pallu embroidery layering.',
+          img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    /* ------------------------------------------------------------
+       WOMEN'S WEAR — shown ONLY on the Women's Wear page
+       (Lehengas, festive suits, women's couture — NO sarees here)
+       ------------------------------------------------------------ */
+    const womensCatalog = [
+        { id: 'wm1', name: 'Imperial Hand-Embroidered Bridal Lehenga Set', price: 29500, gender: 'women', type: 'lehenga',
+          desc: 'Heavy luxury aesthetic silhouette with immaculate border layers.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm2', name: 'Champagne Gold Sequin Reception Lehenga Set', price: 31500, gender: 'women', type: 'lehenga',
+          desc: 'Dense sequin and bead work crafted for grand reception entrances.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm3', name: 'Rose Quartz Velvet Embroidered Festive Lehenga', price: 27500, gender: 'women', type: 'lehenga',
+          desc: 'Plush velvet base layered with intricate floral zari embroidery.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm4', name: 'Emerald Green Zardozi Heritage Lehenga Choli', price: 33000, gender: 'women', type: 'lehenga',
+          desc: 'Traditional zardozi metal-thread embroidery across the full skirt panel.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm5', name: 'Ivory Pearl Beaded Designer Wedding Lehenga', price: 34500, gender: 'women', type: 'lehenga',
+          desc: 'Pearl and stone embellishments configured for milestone wedding settings.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm6', name: 'Coral Mirror-Work Festive Anarkali Suit Set', price: 14500, gender: 'women', type: 'semi-formal',
+          desc: 'Flowing anarkali silhouette finished with traditional mirror-work detailing.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm7', name: 'Royal Plum Velvet Designer Sharara Couture Set', price: 19500, gender: 'women', type: 'semi-formal',
+          desc: 'Heavy velvet sharara configuration with premium zari panel work.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm8', name: 'Antique Gold Embellished Indo-Western Gown', price: 23500, gender: 'women', type: 'lehenga',
+          desc: 'Contemporary masterwork silhouette blending heritage embroidery with modern cut lines.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm9', name: 'Wine Maroon Banarasi Silk Festive Saree Gown', price: 21500, gender: 'women', type: 'semi-formal',
+          desc: 'Pre-stitched silk gown silhouette engineered for effortless festive elegance.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm10', name: 'Powder Blue Chikankari Designer Festive Suit', price: 16500, gender: 'women', type: 'semi-formal',
+          desc: 'Delicate hand chikankari thread-work spanning the entire kurta canvas.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm11', name: 'Heritage Crimson Brocade Statement Dupatta Set', price: 8500, gender: 'women', type: 'accessories',
+          desc: 'Elite zari-bordered dupatta crafted to complement premium festive ensembles.',
+          img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'wm12', name: 'Handcrafted Festive Silk Dupatta Accent Stole', price: 2800, gender: 'women', type: 'accessories',
+          desc: 'Elite accessorizing element to complement premium outfits.',
+          img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    /* ------------------------------------------------------------
+       MEN'S WEAR — shown ONLY on the Men's Wear page
+       ------------------------------------------------------------ */
+    const mensCatalog = [
+        { id: 'mn1', name: 'Custom Ceremony Italian Fit Executive Tuxedo', price: 16500, gender: 'men', type: 'blazer',
+          desc: 'Bespoke precision structured shoulder layout perfect for formal settings.',
+          img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn2', name: 'Charcoal Slim Fit Premium Formal Blazer', price: 11000, gender: 'men', type: 'formal',
+          desc: 'Elite absolute business profile configuration with tailored precision lines.',
+          img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn3', name: 'Premium Semi-Formal Silk Jacquard Waistcoat', price: 6500, gender: 'men', type: 'semi-formal',
+          desc: 'Sartorial festive alignment tailored to provide premium execution.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn4', name: 'Royal Zari Embroidered Festive Sherwani Set', price: 24500, gender: 'men', type: 'semi-formal',
+          desc: 'Heavy gold zari embroidery spanning the entire collar and panel front.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn5', name: 'Midnight Navy Double-Breasted Corporate Suit', price: 18500, gender: 'men', type: 'formal',
+          desc: 'Sharp double-breasted silhouette engineered for executive boardroom settings.',
+          img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn6', name: 'Ivory Bandhgala Wedding Reception Blazer Set', price: 21500, gender: 'men', type: 'blazer',
+          desc: 'Structured bandhgala collar configuration finished with subtle gold piping.',
+          img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn7', name: 'Deep Maroon Velvet Festive Nehru Jacket Set', price: 9500, gender: 'men', type: 'semi-formal',
+          desc: 'Plush velvet finish layered over a crisp festive kurta-pyjama base.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn8', name: 'Slate Grey Three-Piece Heritage Formal Suit', price: 19500, gender: 'men', type: 'formal',
+          desc: 'Three-piece structured configuration including matching premium waistcoat.',
+          img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn9', name: 'Pure Silk Cream Traditional Festive Kurta Set', price: 7500, gender: 'men', type: 'semi-formal',
+          desc: 'Lightweight pure silk drape finished with delicate thread border accents.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn10', name: 'Imperial Golden Zari Wedding Sherwani Ensemble', price: 28500, gender: 'men', type: 'semi-formal',
+          desc: 'Festive zari royal configuration designed for groom-level wedding settings.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn11', name: 'Onyx Black Tailored Tuxedo with Satin Lapel', price: 22500, gender: 'men', type: 'blazer',
+          desc: 'Satin lapel detailing finished with a precision-tailored silhouette.',
+          img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'mn12', name: 'Mocha Brown Textured Wool Formal Overcoat', price: 17500, gender: 'men', type: 'formal',
+          desc: 'Heavyweight textured wool overcoat engineered for premium winter formal settings.',
+          img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    /* ------------------------------------------------------------
+       KIDS & ACCESSORIES — appear in Shop Online only (not a
+       standalone page yet, but included for filter completeness)
+       ------------------------------------------------------------ */
+    const kidsAndAccessoriesCatalog = [
+        { id: 'kd1', name: 'Kids Royal Silk Sherwani Festival Pack', price: 4500, gender: 'kid', type: 'semi-formal',
+          desc: 'Comfort soft traditional wear engineered for children celebratory events.',
+          img: 'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'kd2', name: 'Kids Festive Zari Border Pattu Pavadai Set', price: 5500, gender: 'kid', type: 'semi-formal',
+          desc: 'Traditional festive pavadai set finished with delicate zari border detailing.',
+          img: 'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'ac1', name: 'Handcrafted Festive Silk Dupatta Accent Stole', price: 2800, gender: 'women', type: 'accessories',
+          desc: 'Elite accessorizing element to complement premium outfits.',
+          img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'ac2', name: 'Premium Zari-Woven Pocket Square & Brooch Set', price: 3200, gender: 'men', type: 'accessories',
+          desc: 'Finishing accessory layer crafted to elevate formal blazer ensembles.',
+          img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    /* ------------------------------------------------------------
+       OFFERS — shown on the Offers / Exclusive Deals page
+       ------------------------------------------------------------ */
+    const offersCatalog = [
+        { id: 'off1', name: 'Grand Silk Festive Deal - Combo Pack', price: 12500, gender: 'women', type: 'saree',
+          desc: 'Premium paired handloom offer pack.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'off2', name: 'Ceremonial Suit Blazer Combo Set', price: 8500, gender: 'men', type: 'blazer',
+          desc: 'Premium luxury cut coordinate ensemble.',
+          img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'off3', name: 'Festive Couture Lehenga Bundle Offer', price: 24500, gender: 'women', type: 'lehenga',
+          desc: 'Bundled heritage lehenga set at an exclusive showroom rate.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'off4', name: 'Royal Sherwani & Accessory Combo Deal', price: 19500, gender: 'men', type: 'semi-formal',
+          desc: 'Complete festive ensemble bundled with premium accessory pieces.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    /* ------------------------------------------------------------
+       BLOG — shown on the Style Journal page
+       (price field here is used as the "Read Guide" label/link text)
+       ------------------------------------------------------------ */
+    const blogCatalog = [
+        { id: 'bl1', name: 'Authentic Weaving Mechanics of pure Silk Zari Threads', price: 'Read Guide',
+          desc: 'Deep structural insights concerning heritage fabrics mapping processes and design methodologies.',
+          img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'bl2', name: 'The Perfect Fit Parameter Selection for Farewell Luxury Blazers', price: 'Read Guide',
+          desc: 'Deep structural insights concerning heritage fabrics mapping processes and design methodologies.',
+          img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'bl3', name: 'Decoding Kanchipuram vs Banarasi: A Heritage Comparison Guide', price: 'Read Guide',
+          desc: 'Deep structural insights concerning heritage fabrics mapping processes and design methodologies.',
+          img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80' },
+
+        { id: 'bl4', name: 'Bridal Lehenga Trends: What Brides Are Choosing This Season', price: 'Read Guide',
+          desc: 'Deep structural insights concerning heritage fabrics mapping processes and design methodologies.',
+          img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+
+    /* ------------------------------------------------------------
+       FINAL CATALOG OBJECT — used by the website's rendering engine.
+       Generally you do NOT need to edit anything below this line.
+       The Shop Online page automatically combines every category so
+       its filters can search across the full inventory.
+       ------------------------------------------------------------ */
+    window.RSR_CATALOG = {
+        offers: offersCatalog,
+        sarees: sareesCatalog,
+        womens: womensCatalog,
+        mens: mensCatalog,
+        blog: blogCatalog,
+        // Shop Online = everything combined (sarees + womens + mens + kids/accessories)
+        shop: [
+            ...sareesCatalog,
+            ...womensCatalog,
+            ...mensCatalog,
+            ...kidsAndAccessoriesCatalog
+        ]
+    };
+
+})();

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSR Luxury Control Panel Engine</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 40px;
+        }
+        .panel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        h1 { font-size: 24px; margin-bottom: 8px; color: #e2e8f0; letter-spacing: 0.5px; }
+        p { color: #94a3b8; font-size: 14px; margin-bottom: 30px; }
+        .section-block {
+            border-top: 1px solid #334155;
+            padding-top: 24px;
+            margin-top: 24px;
+        }
+        .section-block h2 { font-size: 16px; margin-bottom: 16px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; }
+        .input-group {
+            margin-bottom: 18px;
+        }
+        label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: #cbd5e1; }
+        input[type="text"], textarea {
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid #475569;
+            padding: 12px;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus, textarea:focus {
+            border-color: #38bdf8;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+        }
+        .save-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .save-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            animation: slideIn 0.3s ease forwards;
+        }
+        @keyframes slideIn { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="panel-container">
+        <h1>RSR Core Hub Workspace Dashboard</h1>
+        <p>Modify and sync non-coding data items instantly down to the index.html customer layout canvas.</p>
+
+        <form id="admin-panel-form">
+            <div class="section-block">
+                <h2>1. Banner Navigation Controls</h2>
+                <div class="input-group">
+                    <label>Sleek Infinite Luxury Marquee Text</label>
+                    <input type="text" id="marquee" value="Exclusive Festive Collections Now Live • Wholesale Price @ Retail Showroom • Premium Tailoring & Luxury Apparel">
+                </div>
+            </div>
+
+            <div class="section-block">
+                <h2>2. Welcome View Content</h2>
+                <div class="input-group">
+                    <label>Subheading Badge Text</label>
+                    <input type="text" id="homeTag" value="Wholesale Price @ Retail Showroom">
+                </div>
+                <div class="input-group">
+                    <label>Main Showcase Headline Title</label>
+                    <input type="text" id="homeTitle" value="The Ultimate Heritage Luxury Experience">
+                </div>
+                <div class="input-group">
+                    <label>Description Paragraph Narrative</label>
+                    <textarea id="homeDesc" rows="3">Step into the absolute standard of fine clothing. From timeless heritage wedding silk sarees to pristine, modern custom-tailored men's blazers, we bring you exquisite craftsmanship without compromise.</textarea>
+                </div>
+                <div class="input-group">
+                    <label>Main Welcome View Image URL</label>
+                    <input type="text" id="imgHome" value="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80">
+                </div>
+            </div>
+
+            <div class="section-block">
+                <h2>3. Gallery & Product Image Matrix</h2>
+                <div class="input-group">
+                    <label>Silk Saree Image 1 URL</label>
+                    <input type="text" id="imgSilk1" value="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80">
+                </div>
+                <div class="input-group">
+                    <label>Silk Saree Image 2 URL</label>
+                    <input type="text" id="imgSilk2" value="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80">
+                </div>
+                <div class="input-group">
+                    <label>Mens Wear Suit Image 1 URL</label>
+                    <input type="text" id="imgMen1" value="https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80">
+                </div>
+                <div class="input-group">
+                    <label>Mens Wear Suit Image 2 URL</label>
+                    <input type="text" id="imgMen2" value="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80">
+                </div>
+                <div class="input-group">
+                    <label>Womens Wear Clothing Image 1 URL</label>
+                    <input type="text" id="imgWomen1" value="https://images.unsplash.com/photo-1583391265517-35bbdba01229?auto=format&fit=crop&w=600&q=80">
+                </div>
+                <div class="input-group">
+                    <label>About Showroom Context Image URL</label>
+                    <input type="text" id="imgAbout" value="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80">
+                </div>
+            </div>
+
+            <button type="button" class="save-btn" onclick="syncWorkspaceChanges()">Sync Workspace Changes</button>
+        </form>
+    </div>
+
+    <div class="toast" id="toast">Data Sync Complete!</div>
+
+    <script>
+        function syncWorkspaceChanges() {
+            const configData = {
+                marquee: document.getElementById('marquee').value,
+                homeTag: document.getElementById('homeTag').value,
+                homeTitle: document.getElementById('homeTitle').value,
+                homeDesc: document.getElementById('homeDesc').value,
+                imgHome: document.getElementById('imgHome').value,
+                imgSilk1: document.getElementById('imgSilk1').value,
+                imgSilk2: document.getElementById('imgSilk2').value,
+                imgMen1: document.getElementById('imgMen1').value,
+                imgMen2: document.getElementById('imgMen2').value,
+                imgWomen1: document.getElementById('imgWomen1').value,
+                imgAbout: document.getElementById('imgAbout').value
+            };
+            
+            localStorage.setItem('rsr_luxury_config', JSON.stringify(configData));
+            
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+
+        // Auto Load Existing Saved Cache Key
+        window.addEventListener('DOMContentLoaded', () => {
+            const existing = localStorage.getItem('rsr_luxury_config');
+            if(existing) {
+                const data = JSON.parse(existing);
+                Object.keys(data).forEach(key => {
+                    const field = document.getElementById(key);
+                    if(field) field.value = data[key];
+                });
+            }
+        });
+    </script>
+</body>
+</html>

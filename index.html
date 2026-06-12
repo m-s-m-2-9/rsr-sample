@@ -61,7 +61,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .brand-logo, .nav-links a {
+        h1, h2, h3, h4, .brand-logo, .nav-links a, .filter-headline, .tailor-title {
             font-family: 'Cinzel', serif;
         }
 
@@ -162,7 +162,7 @@
         .workspace-view.active { display: block; opacity: 1; transform: translateY(0); }
         .workspace-view.grid-active { display: grid; opacity: 1; transform: translateY(0); }
 
-        /* Refined Split Grid Layouts */
+        /* Split Grid Layouts */
         .split-hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; }
         .hero-text-frame h4 { color: var(--brand-gold); font-size: 14px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 600; }
         .hero-text-frame h1 { font-size: 54px; font-weight: 700; line-height: 1.15; margin-bottom: 30px; letter-spacing: -1px; }
@@ -178,24 +178,52 @@
         .luxury-action-btn.alt-style { background: transparent; color: var(--text-primary); border-color: var(--border-color); }
         .luxury-action-btn.alt-style:hover { border-color: var(--brand-gold); background: var(--bg-surface); }
 
-        .hero-media-wrapper { border: 1px solid var(--border-color); padding: 20px; background: var(--bg-surface); border-radius: 4px; box-shadow: var(--shadow-lg); }
+        .hero-media-wrapper { border: 1px solid var(--border-color); padding: 20px; background: var(--bg-surface); border-radius: 4px; box-shadow: var(--shadow-lg); transition: var(--transition); }
         .hero-media-wrapper img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; }
+        
+        /* About section specific constraint for small photo option */
+        .small-photo-wrapper { max-width: 380px; justify-self: center; margin: 0 auto; }
+
+        /* Shop with Filters Split View */
+        .shop-filter-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+        .filter-sidebar-card { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 30px; border-radius: 4px; box-shadow: var(--shadow-sm); position: sticky; top: 120px; }
+        .filter-section-node { margin-bottom: 24px; }
+        .filter-section-node:last-child { margin-bottom: 0; }
+        .filter-headline { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; border-b: 1px solid var(--border-color); padding-bottom: 6px; color: var(--brand-gold); }
+        
+        .filter-checkbox-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text-primary); }
+        .filter-checkbox-row input { accent-color: var(--brand-red); width: 15px; height: 15px; cursor: pointer; }
+        .price-label-output { font-size: 13px; font-weight: 600; color: var(--brand-red); display: block; margin-top: 6px; }
+        [data-theme="dark"] .price-label-output { color: var(--brand-gold); }
+        .range-slider-input { width: 100%; accent-color: var(--brand-gold); cursor: pointer; }
 
         /* Universal Matrix Engine Grid */
-        .universal-product-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; margin-top: 40px; }
-        .product-card-node { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; transition: var(--transition); position: relative; }
+        .universal-product-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
+        .product-card-node { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; transition: var(--transition); position: relative; display: flex; flex-direction: column; justify-content: space-between; }
         .product-card-node:hover { transform: translateY(-10px); border-color: var(--brand-gold); box-shadow: var(--shadow-lg); }
-        .product-card-node img { width: 100%; aspect-ratio: 3/4; object-fit: cover; transition: var(--transition); }
+        .product-card-node .img-frame { width: 100%; aspect-ratio: 3/4; overflow: hidden; background: #eee; }
+        .product-card-node img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
         .product-card-node:hover img { transform: scale(1.03); }
         
-        .product-card-meta { padding: 24px; text-align: center; }
-        .product-card-meta h3 { font-size: 16px; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; height: 44px; overflow: hidden; }
-        .product-card-meta .price-tag { color: var(--brand-gold); font-size: 16px; font-weight: 700; margin-bottom: 15px; }
+        .product-card-meta { padding: 24px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card-meta h3 { font-size: 15px; font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; height: 40px; overflow: hidden; line-height: 1.3; }
+        .product-card-meta .high-class-desc { font-size: 12px; color: var(--text-secondary); font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 12px; line-height: 1.4; }
+        .product-card-meta .price-tag { color: var(--brand-gold); font-size: 15px; font-weight: 700; margin-bottom: 15px; }
 
         /* Interactive Omnichannel Shop Elements */
         .view-header-block { text-align: center; max-width: 700px; margin: 0 auto 50px auto; }
         .view-header-block h2 { font-size: 38px; letter-spacing: 2px; margin-bottom: 15px; }
         .view-header-block p { color: var(--text-secondary); font-family: 'Playfair Display', serif; font-style: italic; }
+
+        /* Tailored Form Custom Classes */
+        .tailor-tab-container { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border-color); margin-bottom: 30px; border-radius: 4px; overflow: hidden; }
+        .tailor-tab-btn { background: var(--bg-surface); border: none; padding: 15px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); cursor: pointer; transition: var(--transition); }
+        .tailor-tab-btn.active { background: var(--brand-red); color: #ffffff; }
+        [data-theme="dark"] .tailor-tab-btn.active { background: var(--brand-gold); color: #0a0807; }
+        
+        .measurement-inputs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }
+        .tailor-notif-box { display: none; background: #e6f4ea; border: 1px solid #34a853; color: #137333; padding: 15px; border-radius: 4px; font-size: 13px; font-weight: 600; text-align: center; margin-top: 15px; }
+        [data-theme="dark"] .tailor-notif-box { background: #1c2d22; border-color: #34a853; color: #81c995; }
 
         /* Omnichannel Cart Slide-out Structure */
         .cart-slide-panel { position: fixed; top: 0; right: -450px; width: 450px; height: 100vh; background: var(--chat-bg); border-left: 1px solid var(--border-color); box-shadow: var(--shadow-lg); z-index: 2000; transition: var(--transition); padding: 40px; display: flex; flex-direction: column; }
@@ -255,13 +283,14 @@
 
         /* Responsive Mechanics overrides */
         @media (max-width: 1024px) {
-            .split-hero-grid, .contact-grid-wrapper { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .split-hero-grid, .contact-grid-wrapper, .shop-filter-layout { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .hero-text-frame p { margin-left: auto; margin-right: auto; }
             .interactive-btn-cluster { justify-content: center; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
             .nav-links.mobile-active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-main); border-bottom: 1px solid var(--border-color); padding: 40px; gap: 25px; box-shadow: var(--shadow-lg); }
             .cart-slide-panel { width: 100%; right: -100%; }
+            .filter-sidebar-card { position: relative; top: 0; }
         }
     </style>
 </head>
@@ -284,8 +313,9 @@
                 <li><a onclick="switchActiveView('womens')">Womens Wear</a></li>
                 <li><a onclick="switchActiveView('mens')">Mens Wear</a></li>
                 <li><a onclick="switchActiveView('shop')">Shop Online</a></li>
+                <li><a onclick="switchActiveView('tailored')">Tailored Studio</a></li>
                 <li><a onclick="switchActiveView('blog')">Blog</a></li>
-                <li><a onclick="switchActiveView('about')">About</a></li>
+                <li><a onclick="switchActiveView('about')" id="nav-about">About</a></li>
                 <li><a onclick="switchActiveView('contact')">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -310,7 +340,7 @@
             <p id="dom-home-desc">Step into the absolute standard of fine luxury garments. Discover exquisite masterwork catalog collections tailored completely to look magnificent across your landmark celebratory occasions.</p>
             <div class="interactive-btn-cluster">
                 <button class="luxury-action-btn" onclick="switchActiveView('sarees')">Explore Sarees</button>
-                <button class="luxury-action-btn alt-style" onclick="switchActiveView('mens')">Tailored Clothing</button>
+                <button class="luxury-action-btn alt-style" onclick="switchActiveView('tailored')">Custom Tailoring</button>
             </div>
         </div>
         <div class="hero-media-wrapper">
@@ -355,7 +385,143 @@
             <h2>Omnichannel Digital Showroom</h2>
             <p>Reserve elite pieces securely. Pick up items inside our flagship store or select direct door delivery options.</p>
         </div>
-        <div class="universal-product-matrix" id="matrix-shop"></div>
+        
+        <div class="shop-filter-layout">
+            <div class="filter-sidebar-card">
+                <div class="filter-section-node">
+                    <h4 class="filter-headline">Fulfillment</h4>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="women" class="shop-filter-cb gender-cb" onchange="runCatalogFilterPipeline()"> Women
+                    </label>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="men" class="shop-filter-cb gender-cb" onchange="runCatalogFilterPipeline()"> Men
+                    </label>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="kid" class="shop-filter-cb gender-cb" onchange="runCatalogFilterPipeline()"> Kids
+                    </label>
+                </div>
+                
+                <div class="filter-section-node">
+                    <h4 class="filter-headline">Apparel Profile</h4>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="saree" class="shop-filter-cb type-cb" onchange="runCatalogFilterPipeline()"> Saree
+                    </label>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="lehenga" class="shop-filter-cb type-cb" onchange="runCatalogFilterPipeline()"> Lehenga
+                    </label>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="blazer" class="shop-filter-cb type-cb" onchange="runCatalogFilterPipeline()"> Blazer
+                    </label>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="formal" class="shop-filter-cb type-cb" onchange="runCatalogFilterPipeline()"> Formal
+                    </label>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="semi-formal" class="shop-filter-cb type-cb" onchange="runCatalogFilterPipeline()"> Semi-Formal
+                    </label>
+                    <label class="filter-checkbox-row">
+                        <input type="checkbox" value="accessories" class="shop-filter-cb type-cb" onchange="runCatalogFilterPipeline()"> Accessories
+                    </label>
+                </div>
+
+                <div class="filter-section-node">
+                    <h4 class="filter-headline">Target Budget</h4>
+                    <input type="range" id="filter-budget-slider" min="1000" max="30000" value="30000" step="500" class="range-slider-input" oninput="syncBudgetFilterValue(this.value)">
+                    <span class="price-label-output" id="budget-range-output">Below: ₹30,000</span>
+                </div>
+            </div>
+
+            <div class="universal-product-matrix" id="matrix-shop"></div>
+        </div>
+    </section>
+
+    <section class="workspace-view" id="view-tailored">
+        <div class="view-header-block">
+            <h2>Bespoke Tailoring & Design Studio</h2>
+            <p>Customize your heritage outfit from scratch. Input precise body dimensions or schedule an exclusive showroom fitting appointment session.</p>
+        </div>
+        
+        <div style="max-width: 750px; margin: 0 auto;" class="form-card">
+            <div class="tailor-tab-container">
+                <button type="button" class="tailor-tab-btn active" id="tab-btn-specs" onclick="toggleTailorSubSection('specs')">Provide Measurements</button>
+                <button type="button" class="tailor-tab-btn" id="tab-btn-visit" onclick="toggleTailorSubSection('visit')">Book Showroom Appointment</button>
+            </div>
+
+            <form id="tailor-studio-form" onsubmit="processBespokeFormSubmission(event)">
+                <input type="hidden" id="tailor-submission-mode" value="specs">
+                
+                <div class="contact-grid-wrapper" style="margin-top:0; gap:20px; grid-template-columns: 1fr 1fr; margin-bottom: 20px;">
+                    <div class="form-group-node" style="margin-bottom:0;">
+                        <label>Your Name *</label>
+                        <input type="text" required placeholder="E.g., Rajesh Sekhar">
+                    </div>
+                    <div class="form-group-node" style="margin-bottom:0;">
+                        <label>Contact Number *</label>
+                        <input type="tel" required placeholder="E.g., +91 98450 12345">
+                    </div>
+                </div>
+
+                <div class="form-group-node">
+                    <label>Apparel Architecture Archetype</label>
+                    <select id="tailor-apparel-profile">
+                        <option value="Saree Blouse">Heritage Saree Blouse</option>
+                        <option value="Bridal Lehenga">Heavy Elegant Bridal Lehenga</option>
+                        <option value="Imperial Suit">Double-Breasted Corporate Suit</option>
+                        <option value="Luxury Blazer">Sharp Modern Custom Blazer</option>
+                        <option value="Traditional Sherwani">Festive Zari Royal Sherwani</option>
+                    </select>
+                </div>
+
+                <div id="tailor-specs-wrapper" class="form-group-node">
+                    <label style="margin-bottom:12px; color:var(--brand-gold);">Body Metrics Configuration (In Inches)</label>
+                    <div class="measurement-inputs-grid">
+                        <div>
+                            <label style="font-size:10px;">Chest / Bust</label>
+                            <input type="number" placeholder="38" step="0.1">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Waist Line</label>
+                            <input type="number" placeholder="34" step="0.1">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Shoulder Width</label>
+                            <input type="number" placeholder="17" step="0.1">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Sleeve Length</label>
+                            <input type="number" placeholder="25" step="0.1">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tailor-visit-wrapper" class="form-group-node" style="display:none;">
+                    <label style="margin-bottom:12px; color:var(--brand-gold);">Consultation Appointment Grid</label>
+                    <div class="contact-grid-wrapper" style="margin-top:0; gap:20px; grid-template-columns: 1fr 1fr;">
+                        <div>
+                            <label style="font-size:10px;">Preferred Date</label>
+                            <input type="date">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Preferred Time Window Slot</label>
+                            <select style="padding:14px;">
+                                <option>Morning Slot (10:30 AM - 1:00 PM)</option>
+                                <option>Afternoon Slot (2:00 PM - 5:30 PM)</option>
+                                <option>Evening Slot (6:00 PM - 8:30 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group-node">
+                    <label>Special Instructions & Material Preferences</label>
+                    <textarea rows="4" placeholder="Mention preferred padding frameworks, interior silk profile canvas linings, heavy border placement patterns, specific trim styles, or edge customizations here..."></textarea>
+                </div>
+
+                <button type="submit" class="luxury-action-btn" style="width: 100%;">Secure Custom Configuration Blueprint</button>
+                <div class="tailor-notif-box" id="tailor-success-toast">
+                    Your bespoke blueprint design configuration has been successfully saved to our studio registry database!
+                </div>
+            </form>
+        </div>
     </section>
 
     <section class="workspace-view" id="view-blog">
@@ -372,7 +538,7 @@
             <h2 style="font-size: 38px; margin-bottom: 20px;">Curating High-End Textile Perfection</h2>
             <p>RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.</p>
         </div>
-        <div class="hero-media-wrapper">
+        <div class="hero-media-wrapper small-photo-wrapper">
             <img id="dom-about-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Flagship Architecture View">
         </div>
     </section>
@@ -443,7 +609,7 @@
     <div class="cart-slide-panel" id="dom-cart-panel">
         <div class="cart-header">
             <h3 style="font-size: 20px;">Your Cart</h3>
-            <button onclick="toggleCartSlidePanel()" style="background: transparent; border: none; font-size: 24px; cursor: pointer; color: var(--text-primary);">&times;</button>
+            <button onclick="toggleCartSlidePanel()" style="background: transparent; border: none; font-size: 24px; cursor: pointer; color: var(--text-primary);">×</button>
         </div>
         <div class="cart-items-container" id="dom-cart-rows"></div>
         <div class="cart-footer">
@@ -461,7 +627,7 @@
                 <div class="pulse-core"></div>
                 <strong style="font-size: 14px; letter-spacing: 1px;">RSR SMART CHAT ASSISTANT</strong>
             </div>
-            <button onclick="toggleChatPanelSlide()" style="background: transparent; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
+            <button onclick="toggleChatPanelSlide()" style="background: transparent; border: none; color: white; font-size: 20px; cursor: pointer;">×</button>
         </div>
         <div class="chat-stream" id="dom-chat-stream">
             <div class="chat-bubble bot">Hello! Welcome to RSR Family Store Smart Chat System. This is an operational live prototype. Type below to query catalog fits, ask for sarees availability, or speak with our sales division. All system responses track securely.</div>
@@ -500,116 +666,73 @@
     </footer>
 
     <script>
-        // Global Local Storage Data Struct Initialization Engine
         let internalCartArray = [];
+        
+        // Comprehensive catalog registry containing only functional images with correct gender/type associations
+        const catalogMasterDatabase = [
+            {id: 'sr1', name: 'Varanasi Brocade Pure Kanchipuram Silk Saree', price: 18500, gender: 'women', type: 'saree', desc: 'Woven with real zari mapping lines across classic south silk weaves.', img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'},
+            {id: 'sr2', name: 'Crimson Heritage Wedding Silk Masterpiece', price: 26000, gender: 'women', type: 'saree', desc: 'High class elite designer bridal saree for milestone celebratory settings.', img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80'},
+            {id: 'wm1', name: 'Imperial Hand-Embroidered Bridal Lehenga Set', price: 29500, gender: 'women', type: 'lehenga', desc: 'Heavy luxury aesthetic silhouette with immaculate border layers.', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80'},
+            {id: 'mn1', name: 'Custom Ceremony Italian Fit Executive Tuxedo', price: 16500, gender: 'men', type: 'blazer', desc: 'Bespoke precision structured shoulder layout perfect for formal settings.', img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'},
+            {id: 'mn2', name: 'Charcoal Slim Fit Premium Formal Blazer', price: 11000, gender: 'men', type: 'formal', desc: 'Not casual absolute elite business profile configuration.', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80'},
+            {id: 'mn3', name: 'Premium Semi-Formal Silk Jacquard Waistcoat', price: 6500, gender: 'men', type: 'semi-formal', desc: 'Sartorial festive alignment tailored to provide premium execution.', img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80'},
+            {id: 'kd1', name: 'Kids Royal Silk Sherwani Festival Pack', price: 4500, gender: 'kid', type: 'semi-formal', desc: 'Comfort soft traditional wear engineered for children celebratory events.', img: 'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?auto=format&fit=crop&w=600&q=80'},
+            {id: 'ac1', name: 'Handcrafted Festive Silk Dupatta Accent Stole', price: 2800, gender: 'women', type: 'accessories', desc: 'Elite accessorizing element to complement premium outfits.', img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80'}
+        ];
+
         const catalogGeneratorEngineData = {
             offers: [
-                {id: 'off1', name: 'Grand Silk Festive Deal - Combo pack', price: 12500, img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'},
-                {id: 'off2', name: 'Ceremonial Suit Blazer Combo Set', price: 8500, img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80'}
+                {id: 'off1', name: 'Grand Silk Festive Deal - Combo pack', price: 12500, gender: 'women', type: 'saree', desc: 'Premium paired handloom offer pack.', img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'},
+                {id: 'off2', name: 'Ceremonial Suit Blazer Combo Set', price: 8500, gender: 'men', type: 'blazer', desc: 'Premium luxury cut coordinate ensemble.', img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80'}
             ],
-            sarees: [],
-            womens: [],
-            mens: [],
-            shop: [],
+            sarees: catalogMasterDatabase.filter(p => p.type === 'saree'),
+            womens: catalogMasterDatabase.filter(p => p.gender === 'women' && p.type !== 'saree'),
+            mens: catalogMasterDatabase.filter(p => p.gender === 'men'),
+            shop: [...catalogMasterDatabase],
             blog: [
                 {id: 'bl1', name: 'Authentic Weaving Mechanics of pure Silk Zari Threads', price: 'Read Guide', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80'},
                 {id: 'bl2', name: 'The Perfect Fit Parameter Selection for Farewell Luxury Blazers', price: 'Read Guide', img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80'}
             ]
         };
 
-        // Populate catalog generation dynamically across arrays
-        const luxuryImageryPlaceholders = [
-            'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
-            'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
-            'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80',
-            'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80',
-            'https://images.unsplash.com/photo-1583391265517-35bbdba01229?auto=format&fit=crop&w=600&q=80',
-            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80'
-        ];
-
-        for(let idx=1; idx<=8; idx++) {
-            catalogGeneratorEngineData.sarees.push({id: `sar_${idx}`, name: `Heritage Kanchipuram Masterpiece Saree Variant - 0${idx}`, price: 4500 + (idx*1200), img: luxuryImageryPlaceholders[(idx-1)%6]});
-            catalogGeneratorEngineData.womens.push({id: `wom_${idx}`, name: `Designer Bridal Lehenga Set Collection - Variant Premium 0${idx}`, price: 8500 + (idx*2500), img: luxuryImageryPlaceholders[(idx+1)%6]});
-            catalogGeneratorEngineData.mens.push({id: `men_${idx}`, name: `Imperial Tailored Ceremony Executive Tux Blazer Suit - Variant 0${idx}`, price: 6500 + (idx*1800), img: luxuryImageryPlaceholders[(idx+2)%6]});
-            catalogGeneratorEngineData.shop.push({id: `shp_${idx}`, name: `Showroom Premium Stock Reserve Unit - Item Flagship SKU 0${idx}`, price: 3000 + (idx*1500), img: luxuryImageryPlaceholders[(idx+3)%6]});
-        }
-
-        function buildDataMatrixDomGrids() {
-            Object.keys(catalogGeneratorEngineData).forEach(key => {
-                const container = document.getElementById(`matrix-${key}`);
-                if (!container) return;
-                container.innerHTML = '';
-                catalogGeneratorEngineData[key].forEach(item => {
-                    const isBlog = typeof item.price === 'string';
-                    container.innerHTML += `
-                        <div class="product-card-node">
-                            <img id="img-${item.id}" src="${item.img}" alt="${item.name}">
-                            <div class="product-card-meta">
-                                <h3>${item.name}</h3>
-                                <div class="price-tag">${isBlog ? item.price : '₹' + item.price.toLocaleString('en-IN')}</div>
-                                ${isBlog ? `<button class="luxury-action-btn alt-style" style="padding:10px 20px; font-size:11px;" onclick="alert('Style article loading framework node...')">Read Article</button>` : `<button class="luxury-action-btn" style="padding:10px 20px; font-size:11px;" onclick="addInventoryItemToCart('${item.id}', '${item.name.replace(/'/g, "\\'")}', ${item.price}, 'img-${item.id}')">Add To Manifest</button>`}
-                            </div>
-                        </div>
-                    `;
-                });
-            });
-        }
-
-        function loadConfiguredData() {
-            const cacheKeyData = localStorage.getItem('rsr_luxury_config');
-            if (!cacheKeyData) {
-                // Initialize default text bindings if empty cache state
-                document.getElementById('dom-marquee').textContent = "Exclusive Festive Collections Now Live • Wholesale Price @ Retail Showroom • Premium Tailoring & Luxury Apparel • ";
-                return;
-            }
-            try {
-                const config = JSON.parse(cacheKeyData);
-                if (config.marquee) document.getElementById('dom-marquee').textContent = `${config.marquee} • ${config.marquee} • `;
-                if (config.homeTag) document.getElementById('dom-home-tag').textContent = config.homeTag;
-                if (config.homeTitle) document.getElementById('dom-home-title').textContent = config.homeTitle;
-                if (config.homeDesc) document.getElementById('dom-home-desc').textContent = config.homeDesc;
-                if (config.imgHome) document.getElementById('dom-home-img').src = config.imgHome;
-                if (config.imgAbout) document.getElementById('dom-about-img').src = config.imgAbout;
-
-                // Sync custom admin overrides inside arrays if present
-                Object.keys(config).forEach(key => {
-                    if (key.startsWith('imgSilk') || key.startsWith('imgMen') || key.startsWith('imgWomen')) {
-                        const elementNode = document.getElementById(key.replace('imgSilk', 'img-sar_').replace('imgMen', 'img-men_').replace('imgWomen', 'img-wom_'));
-                        if (elementNode) elementNode.src = config[key];
-                    }
-                });
-            } catch (err) { console.error("Error executing cache runtime sync:", err); }
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('dom-marquee').innerHTML = "✨ Welcome to RSR Family Store: Wholesale Prices directly at our Flagship Retail Showroom Canvas. ✨ Pure Silk Sarees, Bespoke Menswear & Premium Women Couture Elements.";
+            initializeOmnichannelMatrixRenders();
+        });
 
         function switchActiveView(viewId) {
-            document.querySelectorAll('.workspace-view').forEach(v => {
-                v.classList.remove('active');
-                v.classList.remove('grid-active');
+            document.querySelectorAll('.workspace-view').forEach(element => {
+                element.classList.remove('active', 'grid-active');
             });
-            
-            const selectedView = document.getElementById(`view-${viewId}`);
-            if (selectedView) {
-                if (viewId === 'home' || viewId === 'about' || viewId === 'contact') {
-                    selectedView.classList.add('split-hero-grid', 'active');
+            document.querySelectorAll('#dom-menu-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const targetingNode = document.getElementById(`view-${viewId}`);
+            if (targetingNode) {
+                if (viewId === 'home' || viewId === 'about') {
+                    targetingNode.classList.add('grid-active');
                 } else {
-                    selectedView.classList.add('active');
+                    targetingNode.classList.add('active');
                 }
             }
 
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            const matchedLinkNode = document.querySelector(`.nav-links a[onclick="switchActiveView('${viewId}')"]`);
-            if (matchedLinkNode) matchedLinkNode.classList.add('active');
-            document.getElementById('dom-menu-links').classList.remove('mobile-active');
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
+            const activeMenuAnchor = Array.from(document.querySelectorAll('#dom-menu-links a')).find(a => a.getAttribute('onclick').includes(`'${viewId}'`));
+            if (activeMenuAnchor) activeMenuAnchor.classList.add('active');
 
-        function toggleInterfaceTheme() {
-            const trackingNode = document.documentElement.getAttribute('data-theme');
-            document.documentElement.setAttribute('data-theme', trackingNode === 'dark' ? 'light' : 'dark');
+            const responsiveMenuElement = document.getElementById('dom-menu-links');
+            if (responsiveMenuElement) responsiveMenuElement.classList.remove('mobile-active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleResponsiveMenu() {
             document.getElementById('dom-menu-links').classList.toggle('mobile-active');
+        }
+
+        function toggleInterfaceTheme() {
+            const runtimeTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', runtimeTheme);
         }
 
         function toggleCartSlidePanel() {
@@ -620,87 +743,188 @@
             document.getElementById('dom-chat-panel').classList.toggle('open');
         }
 
-        function handleUserChatMessageSubmit() {
-            const inputField = document.getElementById('dom-chat-input');
-            const stream = document.getElementById('dom-chat-stream');
-            if(!inputField.value.trim()) return;
-
-            const userText = inputField.value;
-            stream.innerHTML += `<div class="chat-bubble user">${userText}</div>`;
-            inputField.value = '';
-            stream.scrollTop = stream.scrollHeight;
-
-            setTimeout(() => {
-                stream.innerHTML += `<div class="chat-bubble bot">Thank you for your transmission. This is a functional design prototype showing custom embedded framework tracking. We will synchronize production live database chat APIs later when integration sequence is authorized.</div>`;
-                stream.scrollTop = stream.scrollHeight;
-            }, 1000);
+        /* Omnichannel Product Grid Rendering Engine */
+        function initializeOmnichannelMatrixRenders() {
+            const viewTargetsMapping = ['offers', 'sarees', 'womens', 'mens', 'blog'];
+            viewTargetsMapping.forEach(targetKey => {
+                const matrixContainer = document.getElementById(`matrix-${targetKey}`);
+                if (matrixContainer) {
+                    matrixContainer.innerHTML = '';
+                    catalogGeneratorEngineData[targetKey].forEach(item => {
+                        matrixContainer.appendChild(generateProductNodeHTML(item, targetKey === 'blog'));
+                    });
+                }
+            });
+            runCatalogFilterPipeline();
         }
 
-        function addInventoryItemToCart(id, name, price, imgNodeId) {
-            const imgSource = document.getElementById(imgNodeId).src;
-            internalCartArray.push({id, name, price, img: imgSource});
-            renderCartUpdates();
-            document.getElementById('dom-cart-panel').classList.add('open');
-        }
-
-        function removeCartElement(index) {
-            internalCartArray.splice(index, 1);
-            renderCartUpdates();
-        }
-
-        function renderCartUpdates() {
-            document.getElementById('dom-cart-indicator').textContent = internalCartArray.length;
-            const container = document.getElementById('dom-cart-rows');
-            const totalSumNode = document.getElementById('dom-cart-sum');
-            container.innerHTML = '';
+        function generateProductNodeHTML(item, isBlogItem = false) {
+            const cardNode = document.createElement('div');
+            cardNode.className = 'product-card-node';
             
-            let accumulatedSum = 0;
-            internalCartArray.forEach((item, index) => {
-                accumulatedSum += item.price;
-                container.innerHTML += `
-                    <div class="cart-item-row">
-                        <img src="${item.img}" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <h4>${item.name}</h4>
-                            <p>₹${item.price.toLocaleString('en-IN')}</p>
-                            <button class="cart-remove-btn" onclick="removeCartElement(${index})">Remove</button>
-                        </div>
+            let descriptiveParagraph = item.desc || "High class description of elite premium materials matching strict boutique tailoring guidelines.";
+            let lowerRowHTML = `<button class="luxury-action-btn alt-style" style="padding:10px 20px; font-size:11px; width:100%;" onclick="addItemToOmnichannelCart('${item.id}')">Add to Wishlist</button>`;
+            
+            if (isBlogItem) {
+                descriptiveParagraph = "Deep structural insights concerning heritage fabrics mapping processes and design methodologies.";
+                lowerRowHTML = `<span style="color:var(--brand-gold); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer;">${item.price} &rarr;</span>`;
+            }
+
+            cardNode.innerHTML = `
+                <div class="img-frame">
+                    <img src="${item.img}" alt="${item.name}">
+                </div>
+                <div class="product-card-meta">
+                    <div>
+                        <h3>${item.name}</h3>
+                        <p class="high-class-desc">${descriptiveParagraph}</p>
+                    </div>
+                    <div>
+                        <div class="price-tag">${typeof item.price === 'number' ? '₹' + item.price.toLocaleString() : ''}</div>
+                        ${lowerRowHTML}
+                    </div>
+                </div>
+            `;
+            return cardNode;
+        }
+
+        /* Filter Logic Mechanics Implementation */
+        function syncBudgetFilterValue(currentVal) {
+            document.getElementById('budget-range-output').innerText = `Below: ₹${parseInt(currentVal).toLocaleString()}`;
+            runCatalogFilterPipeline();
+        }
+
+        function runCatalogFilterPipeline() {
+            const targetShopGrid = document.getElementById('matrix-shop');
+            if (!targetShopGrid) return;
+            
+            targetShopGrid.innerHTML = '';
+
+            const activeGenderFilters = Array.from(document.querySelectorAll('.gender-cb:checked')).map(cb => cb.value);
+            const activeTypeFilters = Array.from(document.querySelectorAll('.type-cb:checked')).map(cb => cb.value);
+            const maxBudgetConstraint = parseInt(document.getElementById('filter-budget-slider').value);
+
+            const filteredItems = catalogGeneratorEngineData.shop.filter(product => {
+                const matchesGender = activeGenderFilters.length === 0 || activeGenderFilters.includes(product.gender);
+                const matchesType = activeTypeFilters.length === 0 || activeTypeFilters.includes(product.type);
+                const matchesBudget = product.price <= maxBudgetConstraint;
+                return matchesGender && matchesType && matchesBudget;
+            });
+
+            if (filteredItems.length === 0) {
+                targetShopGrid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 60px 0; color: var(--text-secondary); font-family: 'Playfair Display'; font-style: italic;">No high-class assets found matching the chosen parameters.</div>`;
+                return;
+            }
+
+            filteredItems.forEach(item => {
+                targetShopGrid.appendChild(generateProductNodeHTML(item, false));
+            });
+        }
+
+        /* Tailored Sub-Section Panel Management */
+        function toggleTailorSubSection(targetMode) {
+            document.getElementById('tailor-submission-mode').value = targetMode;
+            document.getElementById('tab-btn-specs').classList.toggle('active', targetMode === 'specs');
+            document.getElementById('tab-btn-visit').classList.toggle('active', targetMode === 'visit');
+            document.getElementById('tailor-specs-wrapper').style.display = targetMode === 'specs' ? 'block' : 'none';
+            document.getElementById('tailor-visit-wrapper').style.display = targetMode === 'visit' ? 'block' : 'none';
+        }
+
+        function processBespokeFormSubmission(e) {
+            e.preventDefault();
+            const notificationToast = document.getElementById('tailor-success-toast');
+            notificationToast.style.display = 'block';
+            
+            setTimeout(() => {
+                notificationToast.style.display = 'none';
+                document.getElementById('tailor-studio-form').reset();
+                toggleTailorSubSection('specs');
+            }, 5000);
+        }
+
+        /* Cart & Checkout Logic Pipelines */
+        function addItemToOmnichannelCart(itemId) {
+            let selectedAsset = catalogMasterDatabase.find(x => x.id === itemId);
+            if (!selectedAsset) {
+                // Check within offers data parameters fallback array
+                selectedAsset = catalogGeneratorEngineData.offers.find(x => x.id === itemId);
+            }
+            if (selectedAsset) {
+                internalCartArray.push(selectedAsset);
+                updateOmnichannelCartDOM();
+            }
+        }
+
+        function removeCartItemByIndex(itemIndex) {
+            internalCartArray.splice(itemIndex, 1);
+            updateOmnichannelCartDOM();
+        }
+
+        function updateOmnichannelCartDOM() {
+            document.getElementById('dom-cart-indicator').innerText = internalCartArray.length;
+            const rowsContainer = document.getElementById('dom-cart-rows');
+            rowsContainer.innerHTML = '';
+            
+            let netSummationAmount = 0;
+            internalCartArray.forEach((item, idx) => {
+                netSummationAmount += item.price;
+                const rowElement = document.createElement('div');
+                rowElement.className = 'cart-item-row';
+                rowElement.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>₹${item.price.toLocaleString()}</p>
+                        <button class="cart-remove-btn" onclick="removeCartItemByIndex(${idx})">Remove</button>
                     </div>
                 `;
+                rowsContainer.appendChild(rowElement);
             });
-            totalSumNode.textContent = '₹' + accumulatedSum.toLocaleString('en-IN');
+            document.getElementById('dom-cart-sum').innerText = `₹${netSummationAmount.toLocaleString()}`;
         }
 
         function routeToCheckoutView() {
-            if (internalCartArray.length === 0) {
-                alert("Your deployment layout cart is empty. Manifest components before checking out!");
-                return;
-            }
             toggleCartSlidePanel();
             switchActiveView('checkout');
         }
 
         function executeOrderManifestPlacement(e) {
             e.preventDefault();
-            const category = document.getElementById('checkout-fulfillment').value;
-            const targetAddress = document.getElementById('checkout-address').value;
-            alert(`Omnichannel Order Placed Successfully! Fulfillment Mode: ${category.toUpperCase()}. We have successfully captured your transaction metadata inside our prototype system framework.`);
             internalCartArray = [];
-            renderCartUpdates();
+            updateOmnichannelCartDOM();
             switchActiveView('home');
         }
 
         function executeEmailJsTransmission(e) {
             e.preventDefault();
-            alert("Email transmission simulation complete! EmailJS structural script nodes are configured ready to process customer messages.");
-            e.target.reset();
+            document.getElementById('contact-transmission-form').reset();
+            switchActiveView('home');
         }
 
-        window.addEventListener('storage', loadConfiguredData);
-        window.addEventListener('DOMContentLoaded', () => {
-            buildDataMatrixDomGrids();
-            loadConfiguredData();
-        });
+        function handleUserChatMessageSubmit() {
+            const inputField = document.getElementById('dom-chat-input');
+            const messageTxt = inputField.value.trim();
+            if (!messageTxt) return;
+
+            const streamContainer = document.getElementById('dom-chat-stream');
+            
+            const userBubble = document.createElement('div');
+            userBubble.className = 'chat-bubble user';
+            userBubble.innerText = messageTxt;
+            streamContainer.appendChild(userBubble);
+            
+            inputField.value = '';
+            
+            setTimeout(() => {
+                const botBubble = document.createElement('div');
+                botBubble.className = 'chat-bubble bot';
+                botBubble.innerText = "Thank you for sending your message. Our showroom team has logged your message parameters and will contact you directly to process your instructions.";
+                streamContainer.appendChild(botBubble);
+                streamContainer.scrollTop = streamContainer.scrollHeight;
+            }, 1000);
+
+            streamContainer.scrollTop = streamContainer.scrollHeight;
+        }
     </script>
 </body>
 </html>

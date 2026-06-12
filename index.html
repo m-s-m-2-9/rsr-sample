@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSR Luxury Store & Saree Palace</title>
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --bg-surface: #f9f6f0;
+            --border-color: #e5dec9;
+            --text-primary: #1c1917;
+            --text-secondary: #6b6661;
+            --brand-red: #800020;
+            --brand-gold: #d4af37;
+            --marquee-bg: #800020;
+            --marquee-text: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(128,0,32,0.06);
+            --shadow-lg: 0 16px 32px rgba(128,0,32,0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0c0a09;
+            --bg-surface: #171412;
+            --border-color: #2e2520;
+            --text-primary: #f5f5f4;
+            --text-secondary: #a8a29e;
+            --marquee-bg: #171412;
+            --marquee-text: #d4af37;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.5);
+            --shadow-lg: 0 16px 32px rgba(0,0,0,0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cinzel', 'Playfair Display', -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: var(--text-primary);
+            transition: var(--transition);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Tiny Endless Luxury Marquee */
+        .luxury-marquee {
+            background: var(--marquee-bg);
+            color: var(--marquee-text);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--brand-gold);
+            position: relative;
+            z-index: 102;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Nav Header Architecture */
+        header {
+            background: rgba(var(--bg-main), 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--brand-red);
+            transition: var(--transition);
+        }
+        
+        [data-theme="dark"] .brand-logo {
+            color: var(--brand-gold);
+        }
+
+        .brand-logo .logo-main {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+
+        .brand-logo .logo-sub {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 4px;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--brand-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Adaptive Action Triggers */
+        .theme-btn, .hamburger {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .theme-btn:hover, .hamburger:hover {
+            border-color: var(--brand-gold);
+            background: var(--bg-surface);
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 18px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* Dynamic Engine Workspace Views */
+        .view-view {
+            max-width: 1300px;
+            margin: 60px auto;
+            padding: 0 40px;
+            display: none;
+            animation: viewFade 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .view-view.active {
+            display: grid;
+        }
+
+        @keyframes viewFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Luxury Showroom Showcase Split Layout */
+        .hero-split {
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-info h4 {
+            color: var(--brand-gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .hero-info h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+
+        .hero-info p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .action-cluster {
+            display: flex;
+            gap: 15px;
+        }
+
+        .luxury-btn {
+            background: var(--brand-red);
+            color: #ffffff;
+            border: 1px solid var(--brand-red);
+            padding: 16px 36px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .luxury-btn:hover {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--brand-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .luxury-btn.secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .luxury-btn.secondary:hover {
+            border-color: var(--brand-gold);
+            background: var(--bg-surface);
+        }
+
+        .hero-canvas-frame {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            background: var(--bg-surface);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-canvas-frame img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        /* Catalog Grid Matrix */
+        .catalog-matrix {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .catalog-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--brand-gold);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .catalog-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+
+        .catalog-meta {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .catalog-meta h3 {
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .catalog-meta p {
+            color: var(--brand-gold);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Fixed Navigation Utility Bar */
+        .hub-dock {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(var(--bg-main), 0.8);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-color);
+            padding: 10px 24px;
+            border-radius: 40px;
+            display: flex;
+            gap: 20px;
+            box-shadow: var(--shadow-lg);
+            z-index: 99;
+        }
+
+        .dock-item {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .dock-item:hover {
+            color: var(--brand-gold);
+            transform: translateY(-2px);
+        }
+
+        .dock-item svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* Persistent AI Integration Layer */
+        .ai-fab {
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            background: var(--bg-surface);
+            border: 1px solid var(--brand-gold);
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 99;
+            transition: var(--transition);
+        }
+
+        .ai-fab:hover {
+            transform: scale(1.05) translateY(-2px);
+            background: var(--brand-red);
+            color: #ffffff;
+        }
+
+        .pulse-light {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16,185,129,0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+        }
+
+        /* Responsive Breakpoint Adaptors */
+        @media (max-width: 992px) {
+            .hero-split { grid-template-columns: 1fr; text-align: center; }
+            .hero-info p { margin-left: auto; margin-right: auto; }
+            .action-cluster { justify-content: center; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            
+            .nav-links.mobile-open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-main);
+                border-bottom: 1px solid var(--border-color);
+                padding: 30px;
+                gap: 20px;
+                box-shadow: var(--shadow-lg);
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="luxury-marquee">
+        <div class="marquee-track" id="marquee-node">Loading exclusive showroom updates... Loading exclusive showroom updates...</div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo" onclick="switchView('home')">
+                <span class="logo-main">RSR</span>
+                <span class="logo-sub">Family Store</span>
+            </a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a onclick="switchView('home')" id="lnk-home" class="active">Welcome</a></li>
+                <li><a onclick="switchView('silk')">Silk Sarees</a></li>
+                <li><a onclick="switchView('mens')">Mens Wear</a></li>
+                <li><a onclick="switchView('womens')">Womens Wear</a></li>
+                <li><a onclick="switchView('about')">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                    <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="view-view hero-split active" id="view-home">
+        <div class="hero-info">
+            <h4 id="home-tag">Wholesale Price @ Retail Showroom</h4>
+            <h1 id="home-title">The Ultimate Heritage Luxury Experience</h1>
+            <p id="home-desc">Step into the absolute standard of fine clothing. From timeless heritage wedding silk sarees to pristine, modern custom-tailored men's blazers, we bring you exquisite craftsmanship without compromise.</p>
+            <div class="action-cluster">
+                <button class="luxury-btn" onclick="switchView('silk')">Explore Silk Collection</button>
+                <button class="luxury-btn secondary" onclick="switchView('mens')">Tailored Suits</button>
+            </div>
+        </div>
+        <div class="hero-canvas-frame">
+            <img id="img-home" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Luxury Display">
+        </div>
+    </main>
+
+    <section class="view-view" id="view-silk">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 32px; letter-spacing: 2px;">Heritage Silk Sarees</h2>
+            <p style="color: var(--text-secondary); margin-top: 10px;">Authentic weaves, golden brocades, and ceremonial masterpiece silks.</p>
+        </div>
+        <div class="catalog-matrix">
+            <div class="catalog-card">
+                <img id="img-silk1" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80" alt="Saree 1">
+                <div class="catalog-meta"><h3>Pure Kanchipuram Silk</h3><p>Premium Luxury Edition</p></div>
+            </div>
+            <div class="catalog-card">
+                <img id="img-silk2" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Saree 2">
+                <div class="catalog-meta"><h3>Banarasi Brocade</h3><p>Pure Zari Weave</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="view-view" id="view-mens">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 32px; letter-spacing: 2px;">Premium Men's Wear</h2>
+            <p style="color: var(--text-secondary); margin-top: 10px;">Masterfully sculpted blazers, ceremony sherwanis, and luxury textiles.</p>
+        </div>
+        <div class="catalog-matrix">
+            <div class="catalog-card">
+                <img id="img-men1" src="https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80" alt="Men 1">
+                <div class="catalog-meta"><h3>Imperial Tailored Blazer</h3><p>Premium Slim Cut</p></div>
+            </div>
+            <div class="catalog-card">
+                <img id="img-men2" src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80" alt="Men 2">
+                <div class="catalog-meta"><h3>Royal Celebration Sherwani</h3><p>Heritage Weave</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="view-view" id="view-womens">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 32px; letter-spacing: 2px;">Designer Women's Wear</h2>
+            <p style="color: var(--text-secondary); margin-top: 10px;">Contemporary bridal lehengas, fusion wear, and festive garments.</p>
+        </div>
+        <div class="catalog-matrix">
+            <div class="catalog-card">
+                <img id="img-women1" src="https://images.unsplash.com/photo-1583391265517-35bbdba01229?auto=format&fit=crop&w=600&q=80" alt="Women 1">
+                <div class="catalog-meta"><h3>Designer Lehenga Choli</h3><p>Hand-embroidered Premium</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="view-view hero-split" id="view-about">
+        <div class="hero-info">
+            <h4>Our Legacy</h4>
+            <h2 style="font-size:36px; margin-bottom:20px;">Crafting High-End Showroom Heritage</h2>
+            <p>RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.</p>
+        </div>
+        <div class="hero-canvas-frame">
+            <img id="img-about" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Our Store">
+        </div>
+    </section>
+
+    <nav class="hub-dock">
+        <a href="https://wa.me/9108041156897" target="_blank" class="dock-item" title="WhatsApp Connect">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="dock-item" title="Instagram Profile">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Instagram</span>
+        </a>
+        <a href="https://maps.google.com" target="_blank" class="dock-item" title="Showroom Location Pin">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Showroom Map</span>
+        </a>
+    </nav>
+
+    <div class="ai-fab" onclick="alert('RSR Smart Chat Assistant Interface Online.')">
+        <div class="pulse-light"></div>
+        <span>Smart Chat Active</span>
+    </div>
+
+    <script>
+        function loadConfiguredData() {
+            const data = localStorage.getItem('rsr_luxury_config');
+            if (!data) return;
+            try {
+                const config = JSON.parse(data);
+                
+                // Content Node Injections
+                if (config.marquee) {
+                    document.getElementById('marquee-node').textContent = `${config.marquee} • ${config.marquee} • `;
+                }
+                if (config.homeTag) document.getElementById('home-tag').textContent = config.homeTag;
+                if (config.homeTitle) document.getElementById('home-title').textContent = config.homeTitle;
+                if (config.homeDesc) document.getElementById('home-desc').textContent = config.homeDesc;
+
+                // Image Asset Node Syncs
+                if (config.imgHome) document.getElementById('img-home').src = config.imgHome;
+                if (config.imgSilk1) document.getElementById('img-silk1').src = config.imgSilk1;
+                if (config.imgSilk2) document.getElementById('img-silk2').src = config.imgSilk2;
+                if (config.imgMen1) document.getElementById('img-men1').src = config.imgMen1;
+                if (config.imgMen2) document.getElementById('img-men2').src = config.imgMen2;
+                if (config.imgWomen1) document.getElementById('img-women1').src = config.imgWomen1;
+                if (config.imgAbout) document.getElementById('img-about').src = config.imgAbout;
+            } catch (e) { console.error("Configuration mapping engine fault:", e); }
+        }
+
+        function switchView(viewId) {
+            document.querySelectorAll('.view-view').forEach(v => v.classList.remove('active'));
+            const selectedView = document.getElementById(`view-${viewId}`);
+            if (selectedView) selectedView.classList.add('active');
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const activeLink = document.querySelector(`.nav-links a[onclick="switchView('${viewId}')"]`);
+            if (activeLink) activeLink.classList.add('active');
+            
+            document.getElementById('nav-menu').classList.remove('mobile-open');
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('nav-menu').classList.toggle('mobile-open');
+        }
+
+        window.addEventListener('storage', loadConfiguredData);
+        window.addEventListener('DOMContentLoaded', loadConfiguredData);
+    </style>
+</body>
+</html>

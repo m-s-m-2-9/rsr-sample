@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSR Luxury Store & Saree Palace | Heritage Omnichannel Portal</title>
-
-    <!-- FIX 8: Inline SVG data-URI favicon (RSR stylized brand mark) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%23800020'/%3E%3Ctext x='50' y='62' font-family='Georgia, serif' font-size='38' font-weight='800' fill='%23d4af37' text-anchor='middle' letter-spacing='2'%3ERSR%3C/text%3E%3C/svg%3E">
-
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -56,10 +52,6 @@
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             background: var(--bg-main);
             color: var(--text-primary);
@@ -71,33 +63,6 @@
 
         h1, h2, h3, h4, .brand-logo, .nav-links a, .filter-headline, .tailor-title {
             font-family: 'Cinzel', serif;
-        }
-
-        /* FIX 7: THEME-MATCHED CUSTOM SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-surface);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--brand-gold), var(--brand-red));
-            border-radius: 10px;
-            border: 2px solid var(--bg-surface);
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--brand-red), var(--brand-gold));
-        }
-        /* Firefox */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: var(--brand-gold) var(--bg-surface);
-        }
-        /* Slim scrollbar specifically for chat stream / cart panels */
-        .chat-stream::-webkit-scrollbar,
-        .cart-items-container::-webkit-scrollbar {
-            width: 6px;
         }
 
         /* Fluid Elite Marquee */
@@ -118,7 +83,7 @@
 
         .marquee-track {
             display: inline-block;
-            animation: marqueeContinuous 35s linear infinite;
+            animation: marqueeContinuous 18s linear infinite;
         }
 
         @keyframes marqueeContinuous {
@@ -144,6 +109,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
         }
 
         .brand-logo {
@@ -153,6 +119,7 @@
             text-decoration: none;
             color: var(--brand-red);
             transition: var(--transition);
+            flex-shrink: 0;
         }
 
         [data-theme="dark"] .brand-logo { color: var(--brand-gold); }
@@ -160,7 +127,7 @@
         .brand-logo .logo-main { font-size: 32px; font-weight: 800; letter-spacing: 6px; line-height: 1; }
         .brand-logo .logo-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; color: var(--text-secondary); }
 
-        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; flex-wrap: wrap; }
         .nav-links a {
             text-decoration: none;
             color: var(--text-primary);
@@ -172,6 +139,7 @@
             position: relative;
             transition: var(--transition);
             cursor: pointer;
+            white-space: nowrap;
         }
 
         .nav-links a::after {
@@ -179,7 +147,7 @@
         }
 
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-        .nav-actions { display: flex; align-items: center; gap: 15px; }
+        .nav-actions { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
 
         .action-icon-btn {
             background: transparent; border: 1px solid var(--border-color); width: 44px; height: 44px; border-radius: 50%;
@@ -190,39 +158,8 @@
         .action-icon-btn:hover { border-color: var(--brand-gold); background: var(--bg-surface); transform: scale(1.05); }
         .cart-count { position: absolute; top: -4px; right: -4px; background: var(--brand-red); color: #ffffff; font-size: 10px; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-main); }
 
-        /* FIX 5: ANIMATED MOBILE HAMBURGER ICON */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 44px;
-            height: 44px;
-            position: relative;
-            flex-shrink: 0;
-        }
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, top 0.35s ease;
-            position: relative;
-        }
-        .hamburger.is-active span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-        .hamburger.is-active span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        .hamburger.is-active span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: var(--text-primary); transition: var(--transition); }
 
         /* Structural Views Workspace */
         .workspace-view { max-width: 1400px; margin: 40px auto 120px auto; padding: 0 40px; display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -245,31 +182,19 @@
         .luxury-action-btn.alt-style { background: transparent; color: var(--text-primary); border-color: var(--border-color); }
         .luxury-action-btn.alt-style:hover { border-color: var(--brand-gold); background: var(--bg-surface); }
 
-        /* FIX 1: HOME PAGE IMAGE LOADING - explicit dimensions + fluid constraints to prevent CLS */
+        /* HERO IMAGE: contained, smaller, centered - prevents the oversized full-bleed photo block */
         .hero-media-wrapper {
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 16px;
             background: var(--bg-surface);
             border-radius: 4px;
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
             width: 100%;
-            max-width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
         }
-        .hero-media-wrapper .media-frame {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            border-radius: 2px;
-            overflow: hidden;
-            background: var(--bg-card);
-            position: relative;
-        }
-        .hero-media-wrapper .media-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .hero-media-wrapper img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; display: block; }
 
         /* About section specific constraint for small photo option */
         .small-photo-wrapper { max-width: 380px; justify-self: center; margin: 0 auto; }
@@ -357,36 +282,16 @@
         .info-meta-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
 
         /* Floating Fixed Navigation Dock */
-        .persistent-dock-hub { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: rgba(var(--bg-main), 0.8); backdrop-filter: blur(25px); border: 1px solid var(--border-color); padding: 12px 30px; border-radius: 50px; display: flex; gap: 25px; box-shadow: var(--shadow-lg); z-index: 850; transition: var(--transition); align-items: center; }
-        .dock-anchor-node { color: var(--text-primary); text-decoration: none; display: flex; align-items: center; justify-content: center; transition: var(--transition); width: 22px; height: 22px; }
-        .dock-anchor-node:hover { color: var(--brand-gold); transform: translateY(-3px) scale(1.1); }
-        .dock-anchor-node svg { width: 100%; height: 100%; display: block; }
+        .persistent-dock-hub { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: rgba(var(--bg-main), 0.8); backdrop-filter: blur(25px); border: 1px solid var(--border-color); padding: 12px 30px; border-radius: 50px; display: flex; gap: 25px; box-shadow: var(--shadow-lg); z-index: 850; transition: var(--transition); }
+        .dock-anchor-node { color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transition); }
+        .dock-anchor-node:hover { color: var(--brand-gold); transform: translateY(-3px); }
+        .dock-anchor-node svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
 
-        /* Smart Trigger Floating Button (Desktop) */
+        /* Smart Trigger Floating Button */
         .ai-fab-anchor { position: fixed; bottom: 25px; right: 30px; background: var(--bg-surface); border: 1px solid var(--brand-gold); padding: 14px 26px; border-radius: 50px; display: flex; align-items: center; gap: 12px; cursor: pointer; box-shadow: var(--shadow-lg); z-index: 850; transition: var(--transition); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
         .ai-fab-anchor:hover { transform: scale(1.05) translateY(-3px); background: var(--brand-red); color: #ffffff; border-color: var(--brand-red); }
-        .pulse-core { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: internalGlow 2s infinite; flex-shrink: 0; }
+        .pulse-core { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: internalGlow 2s infinite; }
         @keyframes internalGlow { 0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16,185,129,0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16,185,129,0); } 100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
-
-        /* FIX 2: Mobile in-navbar smart chat trigger (hidden on desktop) */
-        .mobile-chat-trigger {
-            display: none;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            transition: var(--transition);
-            position: relative;
-            flex-shrink: 0;
-        }
-        .mobile-chat-trigger:hover { border-color: var(--brand-gold); background: var(--bg-surface); }
-        .mobile-chat-trigger .pulse-core { position: absolute; top: 6px; right: 6px; }
-        .mobile-chat-trigger svg { width: 18px; height: 18px; }
 
         /* Global Footer */
         footer { border-top: 1px solid var(--border-color); background: var(--bg-surface); padding: 40px; text-align: center; color: var(--text-secondary); font-size: 12px; letter-spacing: 1px; margin-top: auto; }
@@ -402,21 +307,23 @@
             .cart-slide-panel { width: 100%; right: -100%; }
             .filter-sidebar-card { position: relative; top: 0; }
 
-            /* FIX 2: On mobile, hide desktop FAB and show navbar chat trigger */
-            .ai-fab-anchor { display: none; }
-            .mobile-chat-trigger { display: flex; }
+            /* Hero image: even smaller on tablets/phones */
+            .hero-media-wrapper { max-width: 280px; }
 
-            /* FIX 4: keep dock usable on small screens */
-            .persistent-dock-hub { gap: 18px; padding: 10px 22px; }
-            .dock-anchor-node { width: 20px; height: 20px; }
-
-            /* Slight chat panel width adjustment for very small screens handled by existing 100% rule */
-            .chat-slide-frame { right: 0; left: 0; width: 100%; }
+            /* FIX: Tailored Studio form fields were inheriting centered text-alignment on
+               mobile because they sit inside .contact-grid-wrapper, which the rule above
+               sets to text-align:center. This forces all form groups back to left-aligned,
+               normal block layout so labels/inputs look correct on mobile (no change on desktop). */
+            .form-card .contact-grid-wrapper { text-align: left; }
+            .form-group-node { text-align: left; }
+            .form-group-node label,
+            .form-group-node input,
+            .form-group-node textarea,
+            .form-group-node select { text-align: left; }
         }
 
         @media (max-width: 480px) {
-            .hero-text-frame h1 { font-size: 36px; }
-            .nav-container { padding: 16px 20px; }
+            .hero-media-wrapper { max-width: 240px; padding: 10px; }
         }
     </style>
 </head>
@@ -429,28 +336,30 @@
     <header>
         <div class="nav-container">
             <a href="#" class="brand-logo" onclick="switchActiveView('home')">
-                <span class="logo-main" id="dom-brand-main">RSR</span>
-                <span class="logo-sub" id="dom-brand-sub">Family Store</span>
+                <span class="logo-main">RSR</span>
+                <span class="logo-sub">Family Store</span>
             </a>
-            <ul class="nav-links" id="dom-menu-links"></ul>
+            <ul class="nav-links" id="dom-menu-links">
+                <li><a onclick="switchActiveView('home')" id="nav-home" class="active">Welcome</a></li>
+                <li><a onclick="switchActiveView('curated')">Offers</a></li>
+                <li><a onclick="switchActiveView('sarees')">Sarees</a></li>
+                <li><a onclick="switchActiveView('womens')">Womens Wear</a></li>
+                <li><a onclick="switchActiveView('mens')">Mens Wear</a></li>
+                <li><a onclick="switchActiveView('shop')">Shop Online</a></li>
+                <li><a onclick="switchActiveView('tailored')">Tailored Studio</a></li>
+                <li><a onclick="switchActiveView('blog')">Blog</a></li>
+                <li><a onclick="switchActiveView('about')" id="nav-about">About</a></li>
+                <li><a onclick="switchActiveView('contact')">Contact</a></li>
+            </ul>
             <div class="nav-actions">
                 <button class="action-icon-btn" onclick="toggleInterfaceTheme()" aria-label="Toggle Theme Layout">
                     <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
-
-                <!-- FIX 2: Mobile-only smart chat trigger embedded in navbar alongside theme switch -->
-                <button class="mobile-chat-trigger" onclick="toggleChatPanelSlide()" aria-label="Open Smart Chat Assistant">
-                    <div class="pulse-core"></div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                </button>
-
                 <button class="action-icon-btn" onclick="toggleCartSlidePanel()" aria-label="Open Cart System">
                     <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <div class="cart-count" id="dom-cart-indicator">0</div>
                 </button>
-
-                <!-- FIX 5: Animated hamburger -->
-                <button class="hamburger" onclick="toggleResponsiveMenu()" aria-label="Toggle Layout Menu" id="dom-hamburger">
+                <button class="hamburger" onclick="toggleResponsiveMenu()" aria-label="Toggle Layout Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -467,17 +376,8 @@
                 <button class="luxury-action-btn alt-style" onclick="switchActiveView('tailored')">Custom Tailoring</button>
             </div>
         </div>
-        <!-- FIX 1: Home page image - fixed dims via aspect-ratio frame + eager/high priority loading to avoid CLS -->
         <div class="hero-media-wrapper">
-            <div class="media-frame">
-                <img id="dom-home-img"
-                     src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80"
-                     alt="RSR Store Welcome Image"
-                     width="800" height="1000"
-                     loading="eager"
-                     fetchpriority="high"
-                     decoding="sync">
-            </div>
+            <img id="dom-home-img" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="RSR Store Welcome Image">
         </div>
     </main>
 
@@ -558,8 +458,8 @@
 
                 <div class="filter-section-node">
                     <h4 class="filter-headline">Target Budget</h4>
-                    <input type="range" id="filter-budget-slider" min="1000" max="35000" value="35000" step="500" class="range-slider-input" oninput="syncBudgetFilterValue(this.value)">
-                    <span class="price-label-output" id="budget-range-output">Below: ₹35,000</span>
+                    <input type="range" id="filter-budget-slider" min="1000" max="30000" value="30000" step="500" class="range-slider-input" oninput="syncBudgetFilterValue(this.value)">
+                    <span class="price-label-output" id="budget-range-output">Below: ₹30,000</span>
                 </div>
             </div>
 
@@ -668,13 +568,11 @@
     <section class="workspace-view split-hero-grid" id="view-about">
         <div class="hero-text-frame">
             <h4>Our Showroom Legacy</h4>
-            <h2 style="font-size: 38px; margin-bottom: 20px;" id="dom-about-title">Curating High-End Textile Perfection</h2>
-            <p id="dom-about-desc">RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.</p>
+            <h2 style="font-size: 38px; margin-bottom: 20px;">Curating High-End Textile Perfection</h2>
+            <p>RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.</p>
         </div>
         <div class="hero-media-wrapper small-photo-wrapper">
-            <div class="media-frame">
-                <img id="dom-about-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Flagship Architecture View" width="800" height="1000" loading="lazy" decoding="async">
-            </div>
+            <img id="dom-about-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Flagship Architecture View">
         </div>
     </section>
 
@@ -701,18 +599,18 @@
                     <button type="submit" class="luxury-action-btn" style="width: 100%;">Submit Message Gateway</button>
                 </form>
             </div>
-            <div class="info-meta-row" id="dom-contact-info-row">
+            <div class="info-meta-row">
                 <div class="info-meta-card">
                     <h4>Direct Voice Assistance</h4>
-                    <p id="dom-contact-phone">08041156897 / 08041162825</p>
+                    <p>08041156897 / 08041162825</p>
                 </div>
                 <div class="info-meta-card">
                     <h4>Electronic Mailing Node</h4>
-                    <p id="dom-contact-email">info@rsrsilksareepalace.com</p>
+                    <p>info@rsrsilksareepalace.com</p>
                 </div>
                 <div class="info-meta-card">
                     <h4>Flagship Showroom Coordinate</h4>
-                    <p id="dom-contact-address">61, Besides St. Pius Church, Kammanahalli Main Rd, Bangalore - 560084, Karnataka, India</p>
+                    <p>61, Besides St. Pius Church, Kammanahalli Main Rd, Bangalore - 560084, Karnataka, India</p>
                 </div>
             </div>
         </div>
@@ -773,30 +671,18 @@
         </div>
     </div>
 
-    <!-- FIX 4: High-fidelity inline SVG social dock (WhatsApp, Instagram, Facebook, Google Maps) -->
-    <nav class="persistent-dock-hub" id="dom-social-dock">
-        <a href="https://wa.me/" target="_blank" rel="noopener" class="dock-anchor-node" aria-label="WhatsApp" id="dock-link-whatsapp">
-            <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.43.69 4.7 1.885 6.633L3 29l7.064-2.345A12.43 12.43 0 0 0 16.001 28C22.894 28 28.5 22.393 28.5 15.5S22.894 3 16.001 3zm0 22.7c-1.97 0-3.876-.53-5.54-1.532l-.398-.238-4.187 1.39 1.41-4.08-.26-.42a10.18 10.18 0 0 1-1.6-5.32c0-5.64 4.585-10.225 10.225-10.225 5.64 0 10.225 4.585 10.225 10.225 0 5.64-4.585 10.2-10.225 10.2zm5.61-7.66c-.307-.154-1.816-.896-2.097-.998-.281-.103-.486-.154-.69.154-.205.307-.792 1-.972 1.205-.18.205-.358.23-.665.077-.307-.154-1.296-.477-2.47-1.524-.913-.813-1.528-1.817-1.708-2.124-.18-.307-.02-.473.16-.627.18-.154.486-.46.665-.69.18-.23.24-.394.36-.65.12-.256.06-.477-.03-.65-.09-.18-.665-1.605-.913-2.198-.243-.58-.49-.5-.673-.51-.18-.01-.39-.012-.6-.012-.205 0-.538.077-.825.385-.282.307-1.09 1.07-1.09 2.605s1.116 3.022 1.27 3.23c.154.205 2.137 3.252 5.18 4.434 3.04 1.182 3.04.788 3.589.74.55-.05 1.77-.724 2.02-1.43.25-.706.25-1.31.18-1.43-.07-.13-.282-.21-.585-.36z"/>
-            </svg>
+    <nav class="persistent-dock-hub">
+        <a href="https://wa.me/9108041156897" target="_blank" class="dock-anchor-node">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>WhatsApp</span>
         </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="dock-anchor-node" aria-label="Instagram" id="dock-link-instagram">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
-                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
-            </svg>
+        <a href="https://www.instagram.com/" target="_blank" class="dock-anchor-node">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Instagram</span>
         </a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="dock-anchor-node" aria-label="Facebook" id="dock-link-facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 12.06C22 6.504 17.523 2 12 2S2 6.504 2 12.06c0 5.022 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.522 1.492-3.92 3.777-3.92 1.094 0 2.238.197 2.238.197v2.46h-1.26c-1.243 0-1.63.778-1.63 1.575v1.894h2.773l-.443 2.91h-2.33V22c4.78-.756 8.437-4.918 8.437-9.94z"/>
-            </svg>
-        </a>
-        <a href="https://maps.app.goo.gl/96uGscxby2wPcoQ9A" target="_blank" rel="noopener" class="dock-anchor-node" aria-label="Showroom Map" id="dock-link-maps">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
-            </svg>
+        <a href="https://maps.app.goo.gl/96uGscxby2wPcoQ9A" target="_blank" class="dock-anchor-node">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Showroom Map</span>
         </a>
     </nav>
 
@@ -807,106 +693,46 @@
 
     <footer>
         <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <div id="dom-footer-left">© 2026 RSR Family Store & Saree Palace. All Rights Reserved. Optimized Architectural Layout Canvas.</div>
-            <div id="dom-footer-right">Designed with Pride for Bengaluru Luxury Retail Landscapes.</div>
+            <div>© 2026 RSR Family Store & Saree Palace. All Rights Reserved. Optimized Architectural Layout Canvas.</div>
+            <div>Designed with Pride for Bengaluru Luxury Retail Landscapes.</div>
         </div>
     </footer>
 
-    <!-- Admin-editable content & catalog engine -->
-    <script src="admin.js"></script>
     <script>
         let internalCartArray = [];
+        
+        // Comprehensive catalog registry containing only functional images with correct gender/type associations
+        const catalogMasterDatabase = [
+            {id: 'sr1', name: 'Varanasi Brocade Pure Kanchipuram Silk Saree', price: 18500, gender: 'women', type: 'saree', desc: 'Woven with real zari mapping lines across classic south silk weaves.', img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'},
+            {id: 'sr2', name: 'Crimson Heritage Wedding Silk Masterpiece', price: 26000, gender: 'women', type: 'saree', desc: 'High class elite designer bridal saree for milestone celebratory settings.', img: 'https://images.unsplash.com/photo-1610030470352-7bfbdf2cb932?auto=format&fit=crop&w=600&q=80'},
+            {id: 'wm1', name: 'Imperial Hand-Embroidered Bridal Lehenga Set', price: 29500, gender: 'women', type: 'lehenga', desc: 'Heavy luxury aesthetic silhouette with immaculate border layers.', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80'},
+            {id: 'mn1', name: 'Custom Ceremony Italian Fit Executive Tuxedo', price: 16500, gender: 'men', type: 'blazer', desc: 'Bespoke precision structured shoulder layout perfect for formal settings.', img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'},
+            {id: 'mn2', name: 'Charcoal Slim Fit Premium Formal Blazer', price: 11000, gender: 'men', type: 'formal', desc: 'Not casual absolute elite business profile configuration.', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80'},
+            {id: 'mn3', name: 'Premium Semi-Formal Silk Jacquard Waistcoat', price: 6500, gender: 'men', type: 'semi-formal', desc: 'Sartorial festive alignment tailored to provide premium execution.', img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80'},
+            {id: 'kd1', name: 'Kids Royal Silk Sherwani Festival Pack', price: 4500, gender: 'kid', type: 'semi-formal', desc: 'Comfort soft traditional wear engineered for children celebratory events.', img: 'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?auto=format&fit=crop&w=600&q=80'},
+            {id: 'ac1', name: 'Handcrafted Festive Silk Dupatta Accent Stole', price: 2800, gender: 'women', type: 'accessories', desc: 'Elite accessorizing element to complement premium outfits.', img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80'}
+        ];
+
+        const catalogGeneratorEngineData = {
+            offers: [
+                {id: 'off1', name: 'Grand Silk Festive Deal - Combo pack', price: 12500, gender: 'women', type: 'saree', desc: 'Premium paired handloom offer pack.', img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'},
+                {id: 'off2', name: 'Ceremonial Suit Blazer Combo Set', price: 8500, gender: 'men', type: 'blazer', desc: 'Premium luxury cut coordinate ensemble.', img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80'}
+            ],
+            sarees: catalogMasterDatabase.filter(p => p.type === 'saree'),
+            womens: catalogMasterDatabase.filter(p => p.gender === 'women' && p.type !== 'saree'),
+            mens: catalogMasterDatabase.filter(p => p.gender === 'men'),
+            shop: [...catalogMasterDatabase],
+            blog: [
+                {id: 'bl1', name: 'Authentic Weaving Mechanics of pure Silk Zari Threads', price: 'Read Guide', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80'},
+                {id: 'bl2', name: 'The Perfect Fit Parameter Selection for Farewell Luxury Blazers', price: 'Read Guide', img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80'}
+            ]
+        };
 
         document.addEventListener("DOMContentLoaded", () => {
-            applySiteConfigToDOM();
-            buildNavigationMenu();
-            document.getElementById('dom-marquee').innerHTML = window.RSR_CONFIG.marqueeText;
+            document.getElementById('dom-marquee').innerHTML = "✨ Welcome to RSR Family Store: Wholesale Prices directly at our Flagship Retail Showroom Canvas. ✨ Pure Silk Sarees, Bespoke Menswear & Premium Women Couture Elements.";
             initializeOmnichannelMatrixRenders();
         });
 
-        /* ===========================================================
-           SITE CONFIG APPLICATION (reads from admin.js window.RSR_CONFIG)
-           =========================================================== */
-        function applySiteConfigToDOM() {
-            const cfg = window.RSR_CONFIG;
-            if (!cfg) return;
-
-            // Brand
-            document.getElementById('dom-brand-main').innerText = cfg.brand.logoMain;
-            document.getElementById('dom-brand-sub').innerText = cfg.brand.logoSub;
-            document.title = cfg.brand.pageTitle;
-
-            // Home
-            document.getElementById('dom-home-tag').innerText = cfg.pagesText.home.tag;
-            document.getElementById('dom-home-title').innerText = cfg.pagesText.home.title;
-            document.getElementById('dom-home-desc').innerText = cfg.pagesText.home.desc;
-            document.getElementById('dom-home-img').src = cfg.pagesText.home.image;
-
-            // About
-            document.getElementById('dom-about-title').innerText = cfg.pagesText.about.title;
-            document.getElementById('dom-about-desc').innerText = cfg.pagesText.about.desc;
-            document.getElementById('dom-about-img').src = cfg.pagesText.about.image;
-
-            // View headers (Offers, Sarees, Womens, Mens, Shop, Tailored, Blog, Contact, Checkout)
-            applyViewHeader('curated', cfg.pagesText.offers);
-            applyViewHeader('sarees', cfg.pagesText.sarees);
-            applyViewHeader('womens', cfg.pagesText.womens);
-            applyViewHeader('mens', cfg.pagesText.mens);
-            applyViewHeader('shop', cfg.pagesText.shop);
-            applyViewHeader('tailored', cfg.pagesText.tailored);
-            applyViewHeader('blog', cfg.pagesText.blog);
-            applyViewHeader('contact', cfg.pagesText.contact);
-            applyViewHeader('checkout', cfg.pagesText.checkout);
-
-            // Contact info block
-            document.getElementById('dom-contact-phone').innerText = cfg.contactInfo.phone;
-            document.getElementById('dom-contact-email').innerText = cfg.contactInfo.email;
-            document.getElementById('dom-contact-address').innerText = cfg.contactInfo.address;
-
-            // Footer
-            document.getElementById('dom-footer-left').innerText = cfg.footer.left;
-            document.getElementById('dom-footer-right').innerText = cfg.footer.right;
-
-            // Social dock links
-            if (cfg.social.whatsapp) document.getElementById('dock-link-whatsapp').href = cfg.social.whatsapp;
-            if (cfg.social.instagram) document.getElementById('dock-link-instagram').href = cfg.social.instagram;
-            if (cfg.social.facebook) document.getElementById('dock-link-facebook').href = cfg.social.facebook;
-            if (cfg.social.maps) document.getElementById('dock-link-maps').href = cfg.social.maps;
-        }
-
-        function applyViewHeader(viewId, textObj) {
-            if (!textObj) return;
-            const section = document.getElementById(`view-${viewId}`);
-            if (!section) return;
-            const header = section.querySelector('.view-header-block');
-            if (!header) return;
-            const h2 = header.querySelector('h2');
-            const p = header.querySelector('p');
-            if (h2 && textObj.title) h2.innerText = textObj.title;
-            if (p && textObj.desc) p.innerText = textObj.desc;
-        }
-
-        /* ===========================================================
-           NAVIGATION MENU BUILDER (driven by admin.js config, supports reorder)
-           =========================================================== */
-        function buildNavigationMenu() {
-            const menu = document.getElementById('dom-menu-links');
-            menu.innerHTML = '';
-            window.RSR_CONFIG.navigation.forEach(item => {
-                if (item.enabled === false) return;
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.innerText = item.label;
-                a.onclick = () => switchActiveView(item.view);
-                if (item.view === 'home') a.classList.add('active');
-                li.appendChild(a);
-                menu.appendChild(li);
-            });
-        }
-
-        /* ===========================================================
-           VIEW SWITCHING / RESPONSIVE MENU / THEME
-           =========================================================== */
         function switchActiveView(viewId) {
             document.querySelectorAll('.workspace-view').forEach(element => {
                 element.classList.remove('active', 'grid-active');
@@ -924,25 +750,17 @@
                 }
             }
 
-            const navItem = window.RSR_CONFIG.navigation.find(n => n.view === viewId);
-            if (navItem) {
-                const links = Array.from(document.querySelectorAll('#dom-menu-links a'));
-                const match = links.find(a => a.innerText === navItem.label);
-                if (match) match.classList.add('active');
-            }
+            const activeMenuAnchor = Array.from(document.querySelectorAll('#dom-menu-links a')).find(a => a.getAttribute('onclick').includes(`'${viewId}'`));
+            if (activeMenuAnchor) activeMenuAnchor.classList.add('active');
 
             const responsiveMenuElement = document.getElementById('dom-menu-links');
             if (responsiveMenuElement) responsiveMenuElement.classList.remove('mobile-active');
-
-            const hamburgerBtn = document.getElementById('dom-hamburger');
-            if (hamburgerBtn) hamburgerBtn.classList.remove('is-active');
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleResponsiveMenu() {
             document.getElementById('dom-menu-links').classList.toggle('mobile-active');
-            document.getElementById('dom-hamburger').classList.toggle('is-active');
         }
 
         function toggleInterfaceTheme() {
@@ -958,16 +776,14 @@
             document.getElementById('dom-chat-panel').classList.toggle('open');
         }
 
-        /* ===========================================================
-           PRODUCT MATRIX RENDERING ENGINE (data sourced from admin.js)
-           =========================================================== */
+        /* Omnichannel Product Grid Rendering Engine */
         function initializeOmnichannelMatrixRenders() {
             const viewTargetsMapping = ['offers', 'sarees', 'womens', 'mens', 'blog'];
             viewTargetsMapping.forEach(targetKey => {
                 const matrixContainer = document.getElementById(`matrix-${targetKey}`);
                 if (matrixContainer) {
                     matrixContainer.innerHTML = '';
-                    window.RSR_CATALOG[targetKey].forEach(item => {
+                    catalogGeneratorEngineData[targetKey].forEach(item => {
                         matrixContainer.appendChild(generateProductNodeHTML(item, targetKey === 'blog'));
                     });
                 }
@@ -983,13 +799,13 @@
             let lowerRowHTML = `<button class="luxury-action-btn alt-style" style="padding:10px 20px; font-size:11px; width:100%;" onclick="addItemToOmnichannelCart('${item.id}')">Add to Wishlist</button>`;
             
             if (isBlogItem) {
-                descriptiveParagraph = item.desc || "Deep structural insights concerning heritage fabrics mapping processes and design methodologies.";
+                descriptiveParagraph = "Deep structural insights concerning heritage fabrics mapping processes and design methodologies.";
                 lowerRowHTML = `<span style="color:var(--brand-gold); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer;">${item.price} &rarr;</span>`;
             }
 
             cardNode.innerHTML = `
                 <div class="img-frame">
-                    <img src="${item.img}" alt="${item.name}" loading="lazy" decoding="async">
+                    <img src="${item.img}" alt="${item.name}">
                 </div>
                 <div class="product-card-meta">
                     <div>
@@ -1005,9 +821,7 @@
             return cardNode;
         }
 
-        /* ===========================================================
-           FILTER LOGIC (Shop tab)
-           =========================================================== */
+        /* Filter Logic Mechanics Implementation */
         function syncBudgetFilterValue(currentVal) {
             document.getElementById('budget-range-output').innerText = `Below: ₹${parseInt(currentVal).toLocaleString()}`;
             runCatalogFilterPipeline();
@@ -1023,7 +837,7 @@
             const activeTypeFilters = Array.from(document.querySelectorAll('.type-cb:checked')).map(cb => cb.value);
             const maxBudgetConstraint = parseInt(document.getElementById('filter-budget-slider').value);
 
-            const filteredItems = window.RSR_CATALOG.shop.filter(product => {
+            const filteredItems = catalogGeneratorEngineData.shop.filter(product => {
                 const matchesGender = activeGenderFilters.length === 0 || activeGenderFilters.includes(product.gender);
                 const matchesType = activeTypeFilters.length === 0 || activeTypeFilters.includes(product.type);
                 const matchesBudget = product.price <= maxBudgetConstraint;
@@ -1040,9 +854,7 @@
             });
         }
 
-        /* ===========================================================
-           TAILORED STUDIO SUB-SECTION PANEL MANAGEMENT
-           =========================================================== */
+        /* Tailored Sub-Section Panel Management */
         function toggleTailorSubSection(targetMode) {
             document.getElementById('tailor-submission-mode').value = targetMode;
             document.getElementById('tab-btn-specs').classList.toggle('active', targetMode === 'specs');
@@ -1063,15 +875,12 @@
             }, 5000);
         }
 
-        /* ===========================================================
-           CART & CHECKOUT LOGIC PIPELINES
-           =========================================================== */
+        /* Cart & Checkout Logic Pipelines */
         function addItemToOmnichannelCart(itemId) {
-            let selectedAsset = null;
-            // search across every catalog bucket for the item id
-            for (const bucketKey of Object.keys(window.RSR_CATALOG)) {
-                const found = window.RSR_CATALOG[bucketKey].find(x => x.id === itemId);
-                if (found) { selectedAsset = found; break; }
+            let selectedAsset = catalogMasterDatabase.find(x => x.id === itemId);
+            if (!selectedAsset) {
+                // Check within offers data parameters fallback array
+                selectedAsset = catalogGeneratorEngineData.offers.find(x => x.id === itemId);
             }
             if (selectedAsset) {
                 internalCartArray.push(selectedAsset);
@@ -1091,14 +900,14 @@
             
             let netSummationAmount = 0;
             internalCartArray.forEach((item, idx) => {
-                netSummationAmount += (typeof item.price === 'number' ? item.price : 0);
+                netSummationAmount += item.price;
                 const rowElement = document.createElement('div');
                 rowElement.className = 'cart-item-row';
                 rowElement.innerHTML = `
                     <img src="${item.img}" alt="${item.name}">
                     <div class="cart-item-details">
                         <h4>${item.name}</h4>
-                        <p>₹${(typeof item.price === 'number' ? item.price : 0).toLocaleString()}</p>
+                        <p>₹${item.price.toLocaleString()}</p>
                         <button class="cart-remove-btn" onclick="removeCartItemByIndex(${idx})">Remove</button>
                     </div>
                 `;

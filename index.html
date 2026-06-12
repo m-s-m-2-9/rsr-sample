@@ -3,51 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSR Luxury Store & Saree Palace</title>
+    <title>RSR Luxury Store & Saree Palace | Heritage Omnichannel Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-main: #ffffff;
-            --bg-surface: #f9f6f0;
-            --border-color: #e5dec9;
-            --text-primary: #1c1917;
-            --text-secondary: #6b6661;
+            --bg-surface: #fdfbf7;
+            --bg-card: #ffffff;
+            --border-color: #eaddca;
+            --text-primary: #1a1512;
+            --text-secondary: #65594f;
             --brand-red: #800020;
             --brand-gold: #d4af37;
+            --brand-gold-hover: #aa8c2c;
             --marquee-bg: #800020;
             --marquee-text: #ffffff;
-            --shadow-sm: 0 2px 8px rgba(128,0,32,0.06);
-            --shadow-lg: 0 16px 32px rgba(128,0,32,0.12);
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --chat-bg: #ffffff;
+            --chat-bubble-user: #800020;
+            --chat-bubble-user-text: #ffffff;
+            --chat-bubble-bot: #f3ebe1;
+            --chat-bubble-bot-text: #1a1512;
+            --shadow-sm: 0 4px 12px rgba(128, 0, 32, 0.04);
+            --shadow-lg: 0 20px 40px rgba(128, 0, 32, 0.1);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         [data-theme="dark"] {
-            --bg-main: #0c0a09;
-            --bg-surface: #171412;
-            --border-color: #2e2520;
-            --text-primary: #f5f5f4;
-            --text-secondary: #a8a29e;
-            --marquee-bg: #171412;
+            --bg-main: #0a0807;
+            --bg-surface: #14100e;
+            --bg-card: #1c1714;
+            --border-color: #2e231c;
+            --text-primary: #f5f2eb;
+            --text-secondary: #b3a79a;
+            --marquee-bg: #14100e;
             --marquee-text: #d4af37;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.5);
-            --shadow-lg: 0 16px 32px rgba(0,0,0,0.7);
+            --chat-bg: #1c1714;
+            --chat-bubble-user: #d4af37;
+            --chat-bubble-user-text: #0a0807;
+            --chat-bubble-bot: #2e231c;
+            --chat-bubble-bot-text: #f5f2eb;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cinzel', 'Playfair Display', -apple-system, sans-serif;
         }
 
         body {
             background: var(--bg-main);
             color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
             transition: var(--transition);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Tiny Endless Luxury Marquee */
+        h1, h2, h3, h4, .brand-logo, .nav-links a {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Fluid Elite Marquee */
         .luxury-marquee {
             background: var(--marquee-bg);
             color: var(--marquee-text);
@@ -55,40 +73,39 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            padding: 10px 0;
+            padding: 12px 0;
             overflow: hidden;
             white-space: nowrap;
             border-bottom: 1px solid var(--brand-gold);
+            z-index: 1000;
             position: relative;
-            z-index: 102;
         }
 
         .marquee-track {
             display: inline-block;
-            animation: marquee 30s linear infinite;
+            animation: marqueeContinuous 35s linear infinite;
         }
 
-        @keyframes marquee {
+        @keyframes marqueeContinuous {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        /* Nav Header Architecture */
+        /* Executive Sticky Header */
         header {
             background: rgba(var(--bg-main), 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 900;
             transition: var(--transition);
-            box-shadow: var(--shadow-sm);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 15px 40px;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -102,527 +119,588 @@
             color: var(--brand-red);
             transition: var(--transition);
         }
-        
-        [data-theme="dark"] .brand-logo {
-            color: var(--brand-gold);
-        }
 
-        .brand-logo .logo-main {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: 4px;
-        }
+        [data-theme="dark"] .brand-logo { color: var(--brand-gold); }
 
-        .brand-logo .logo-sub {
-            font-size: 9px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 2px;
-            color: var(--text-secondary);
-        }
+        .brand-logo .logo-main { font-size: 32px; font-weight: 800; letter-spacing: 6px; line-height: 1; }
+        .brand-logo .logo-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; color: var(--text-secondary); }
 
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
         .nav-links a {
             text-decoration: none;
             color: var(--text-primary);
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            padding: 8px 4px;
+            padding: 10px 4px;
             position: relative;
             transition: var(--transition);
             cursor: pointer;
         }
 
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1.5px;
-            background: var(--brand-gold);
-            transition: var(--transition);
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--brand-gold); transition: var(--transition);
         }
 
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-actions { display: flex; align-items: center; gap: 15px; }
+
+        .action-icon-btn {
+            background: transparent; border: 1px solid var(--border-color); width: 44px; height: 44px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-primary); transition: var(--transition); position: relative;
         }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .action-icon-btn:hover { border-color: var(--brand-gold); background: var(--bg-surface); transform: scale(1.05); }
+        .cart-count { position: absolute; top: -4px; right: -4px; background: var(--brand-red); color: #ffffff; font-size: 10px; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-main); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: var(--text-primary); transition: var(--transition); }
+
+        /* Structural Views Workspace */
+        .workspace-view { max-width: 1400px; margin: 40px auto 120px auto; padding: 0 40px; display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .workspace-view.active { display: block; opacity: 1; transform: translateY(0); }
+        .workspace-view.grid-active { display: grid; opacity: 1; transform: translateY(0); }
+
+        /* Refined Split Grid Layouts */
+        .split-hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; }
+        .hero-text-frame h4 { color: var(--brand-gold); font-size: 14px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 600; }
+        .hero-text-frame h1 { font-size: 54px; font-weight: 700; line-height: 1.15; margin-bottom: 30px; letter-spacing: -1px; }
+        .hero-text-frame p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-bottom: 40px; font-family: 'Playfair Display', serif; }
+
+        .interactive-btn-cluster { display: flex; gap: 20px; }
+        .luxury-action-btn {
+            background: var(--brand-red); color: #ffffff; border: 1px solid var(--brand-red); padding: 18px 38px; font-size: 13px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 2px; cursor: pointer; transition: var(--transition);
         }
 
-        /* Adaptive Action Triggers */
-        .theme-btn, .hamburger {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            transition: var(--transition);
-        }
+        .luxury-action-btn:hover { background: transparent; color: var(--text-primary); border-color: var(--brand-gold); transform: translateY(-4px); }
+        .luxury-action-btn.alt-style { background: transparent; color: var(--text-primary); border-color: var(--border-color); }
+        .luxury-action-btn.alt-style:hover { border-color: var(--brand-gold); background: var(--bg-surface); }
 
-        .theme-btn:hover, .hamburger:hover {
-            border-color: var(--brand-gold);
-            background: var(--bg-surface);
-            transform: scale(1.05);
-        }
+        .hero-media-wrapper { border: 1px solid var(--border-color); padding: 20px; background: var(--bg-surface); border-radius: 4px; box-shadow: var(--shadow-lg); }
+        .hero-media-wrapper img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-        }
+        /* Universal Matrix Engine Grid */
+        .universal-product-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; margin-top: 40px; }
+        .product-card-node { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; transition: var(--transition); position: relative; }
+        .product-card-node:hover { transform: translateY(-10px); border-color: var(--brand-gold); box-shadow: var(--shadow-lg); }
+        .product-card-node img { width: 100%; aspect-ratio: 3/4; object-fit: cover; transition: var(--transition); }
+        .product-card-node:hover img { transform: scale(1.03); }
+        
+        .product-card-meta { padding: 24px; text-align: center; }
+        .product-card-meta h3 { font-size: 16px; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; height: 44px; overflow: hidden; }
+        .product-card-meta .price-tag { color: var(--brand-gold); font-size: 16px; font-weight: 700; margin-bottom: 15px; }
 
-        .hamburger span {
-            width: 18px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: var(--transition);
-        }
+        /* Interactive Omnichannel Shop Elements */
+        .view-header-block { text-align: center; max-width: 700px; margin: 0 auto 50px auto; }
+        .view-header-block h2 { font-size: 38px; letter-spacing: 2px; margin-bottom: 15px; }
+        .view-header-block p { color: var(--text-secondary); font-family: 'Playfair Display', serif; font-style: italic; }
 
-        /* Dynamic Engine Workspace Views */
-        .view-view {
-            max-width: 1300px;
-            margin: 60px auto;
-            padding: 0 40px;
-            display: none;
-            animation: viewFade 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
+        /* Omnichannel Cart Slide-out Structure */
+        .cart-slide-panel { position: fixed; top: 0; right: -450px; width: 450px; height: 100vh; background: var(--chat-bg); border-left: 1px solid var(--border-color); box-shadow: var(--shadow-lg); z-index: 2000; transition: var(--transition); padding: 40px; display: flex; flex-direction: column; }
+        .cart-slide-panel.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 20px; }
+        .cart-items-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+        .cart-item-row { display: flex; gap: 15px; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        .cart-item-row img { width: 60px; height: 80px; object-fit: cover; border-radius: 2px; }
+        .cart-item-details { flex: 1; }
+        .cart-item-details h4 { font-size: 14px; margin-bottom: 4px; }
+        .cart-item-details p { color: var(--brand-gold); font-size: 13px; font-weight: 600; }
+        .cart-remove-btn { background: transparent; border: none; color: var(--brand-red); cursor: pointer; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-top: 5px; }
+        .cart-footer { margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        .cart-total-row { display: flex; justify-content: space-between; font-weight: 700; font-size: 18px; margin-bottom: 20px; }
 
-        .view-view.active {
-            display: grid;
-        }
+        /* Simulated Intelligent Chat System Panel */
+        .chat-slide-frame { position: fixed; bottom: -600px; right: 40px; width: 400px; height: 550px; background: var(--chat-bg); border: 1px solid var(--brand-gold); border-radius: 12px 12px 0 0; box-shadow: var(--shadow-lg); z-index: 1500; transition: var(--transition); display: flex; flex-direction: column; overflow: hidden; }
+        .chat-slide-frame.open { bottom: 0; }
+        .chat-panel-header { background: var(--brand-red); color: #ffffff; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        [data-theme="dark"] .chat-panel-header { background: var(--bg-surface); border-bottom: 1px solid var(--brand-gold); color: var(--brand-gold); }
+        .chat-stream { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: var(--bg-surface); }
+        .chat-bubble { max-width: 80%; padding: 12px 16px; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+        .chat-bubble.bot { background: var(--chat-bubble-bot); color: var(--chat-bubble-bot-text); align-self: flex-start; border-left: 3px solid var(--brand-gold); }
+        .chat-bubble.user { background: var(--chat-bubble-user); color: var(--chat-bubble-user-text); align-self: flex-end; }
+        .chat-input-row { padding: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 10px; background: var(--chat-bg); }
+        .chat-input-row input { flex: 1; border: 1px solid var(--border-color); padding: 12px; border-radius: 4px; background: var(--bg-main); color: var(--text-primary); outline: none; font-size: 13px; }
+        .chat-send-btn { background: var(--brand-gold); color: #000000; border: none; padding: 0 20px; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
 
-        @keyframes viewFade {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Contact & Transactional Forms */
+        .contact-grid-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+        .form-card { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 40px; border-radius: 4px; }
+        .form-group-node { margin-bottom: 20px; }
+        .form-group-node label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-secondary); }
+        .form-group-node input, .form-group-node textarea, .form-group-node select { width: 100%; border: 1px solid var(--border-color); padding: 14px; background: var(--bg-main); color: var(--text-primary); border-radius: 2px; outline: none; font-size: 14px; transition: var(--transition); }
+        .form-group-node input:focus, .form-group-node textarea:focus { border-color: var(--brand-gold); }
 
-        /* Luxury Showroom Showcase Split Layout */
-        .hero-split {
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-        }
+        /* Info Segment Meta Blocks */
+        .info-meta-row { display: flex; flex-direction: column; gap: 30px; }
+        .info-meta-card { border-left: 3px solid var(--brand-gold); padding-left: 20px; }
+        .info-meta-card h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--brand-gold); }
+        .info-meta-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
 
-        .hero-info h4 {
-            color: var(--brand-gold);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-        }
+        /* Floating Fixed Navigation Dock */
+        .persistent-dock-hub { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: rgba(var(--bg-main), 0.8); backdrop-filter: blur(25px); border: 1px solid var(--border-color); padding: 12px 30px; border-radius: 50px; display: flex; gap: 25px; box-shadow: var(--shadow-lg); z-index: 850; transition: var(--transition); }
+        .dock-anchor-node { color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transition); }
+        .dock-anchor-node:hover { color: var(--brand-gold); transform: translateY(-3px); }
+        .dock-anchor-node svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
 
-        .hero-info h1 {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            color: var(--text-primary);
-        }
+        /* Smart Trigger Floating Button */
+        .ai-fab-anchor { position: fixed; bottom: 25px; right: 30px; background: var(--bg-surface); border: 1px solid var(--brand-gold); padding: 14px 26px; border-radius: 50px; display: flex; align-items: center; gap: 12px; cursor: pointer; box-shadow: var(--shadow-lg); z-index: 850; transition: var(--transition); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .ai-fab-anchor:hover { transform: scale(1.05) translateY(-3px); background: var(--brand-red); color: #ffffff; border-color: var(--brand-red); }
+        .pulse-core { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: internalGlow 2s infinite; }
+        @keyframes internalGlow { 0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16,185,129,0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16,185,129,0); } 100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
 
-        .hero-info p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 35px;
-        }
+        /* Global Footer */
+        footer { border-top: 1px solid var(--border-color); background: var(--bg-surface); padding: 40px; text-align: center; color: var(--text-secondary); font-size: 12px; letter-spacing: 1px; margin-top: auto; }
 
-        .action-cluster {
-            display: flex;
-            gap: 15px;
-        }
-
-        .luxury-btn {
-            background: var(--brand-red);
-            color: #ffffff;
-            border: 1px solid var(--brand-red);
-            padding: 16px 36px;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .luxury-btn:hover {
-            background: transparent;
-            color: var(--text-primary);
-            border-color: var(--brand-gold);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .luxury-btn.secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-
-        .luxury-btn.secondary:hover {
-            border-color: var(--brand-gold);
-            background: var(--bg-surface);
-        }
-
-        .hero-canvas-frame {
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            background: var(--bg-surface);
-            border-radius: 8px;
-            position: relative;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hero-canvas-frame img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        /* Catalog Grid Matrix */
-        .catalog-matrix {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .catalog-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .catalog-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--brand-gold);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .catalog-card img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-        }
-
-        .catalog-meta {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .catalog-meta h3 {
-            font-size: 16px;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .catalog-meta p {
-            color: var(--brand-gold);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        /* Fixed Navigation Utility Bar */
-        .hub-dock {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(var(--bg-main), 0.8);
-            backdrop-filter: blur(25px);
-            border: 1px solid var(--border-color);
-            padding: 10px 24px;
-            border-radius: 40px;
-            display: flex;
-            gap: 20px;
-            box-shadow: var(--shadow-lg);
-            z-index: 99;
-        }
-
-        .dock-item {
-            color: var(--text-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
-
-        .dock-item:hover {
-            color: var(--brand-gold);
-            transform: translateY(-2px);
-        }
-
-        .dock-item svg {
-            width: 16px;
-            height: 16px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-        }
-
-        /* Persistent AI Integration Layer */
-        .ai-fab {
-            position: fixed;
-            bottom: 25px;
-            right: 30px;
-            background: var(--bg-surface);
-            border: 1px solid var(--brand-gold);
-            padding: 12px 24px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-            z-index: 99;
-            transition: var(--transition);
-        }
-
-        .ai-fab:hover {
-            transform: scale(1.05) translateY(-2px);
-            background: var(--brand-red);
-            color: #ffffff;
-        }
-
-        .pulse-light {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16,185,129,0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16,185,129,0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16,185,129,0); }
-        }
-
-        /* Responsive Breakpoint Adaptors */
-        @media (max-width: 992px) {
-            .hero-split { grid-template-columns: 1fr; text-align: center; }
-            .hero-info p { margin-left: auto; margin-right: auto; }
-            .action-cluster { justify-content: center; }
+        /* Responsive Mechanics overrides */
+        @media (max-width: 1024px) {
+            .split-hero-grid, .contact-grid-wrapper { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-text-frame p { margin-left: auto; margin-right: auto; }
+            .interactive-btn-cluster { justify-content: center; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
-            
-            .nav-links.mobile-open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--bg-main);
-                border-bottom: 1px solid var(--border-color);
-                padding: 30px;
-                gap: 20px;
-                box-shadow: var(--shadow-lg);
-                align-items: center;
-            }
+            .nav-links.mobile-active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-main); border-bottom: 1px solid var(--border-color); padding: 40px; gap: 25px; box-shadow: var(--shadow-lg); }
+            .cart-slide-panel { width: 100%; right: -100%; }
         }
     </style>
 </head>
 <body>
 
     <div class="luxury-marquee">
-        <div class="marquee-track" id="marquee-node">Loading exclusive showroom updates... Loading exclusive showroom updates...</div>
+        <div class="marquee-track" id="dom-marquee">Loading premium updates...</div>
     </div>
 
     <header>
         <div class="nav-container">
-            <a href="#" class="brand-logo" onclick="switchView('home')">
+            <a href="#" class="brand-logo" onclick="switchActiveView('home')">
                 <span class="logo-main">RSR</span>
                 <span class="logo-sub">Family Store</span>
             </a>
-            <ul class="nav-links" id="nav-menu">
-                <li><a onclick="switchView('home')" id="lnk-home" class="active">Welcome</a></li>
-                <li><a onclick="switchView('silk')">Silk Sarees</a></li>
-                <li><a onclick="switchView('mens')">Mens Wear</a></li>
-                <li><a onclick="switchView('womens')">Womens Wear</a></li>
-                <li><a onclick="switchView('about')">About</a></li>
+            <ul class="nav-links" id="dom-menu-links">
+                <li><a onclick="switchActiveView('home')" id="nav-home" class="active">Welcome</a></li>
+                <li><a onclick="switchActiveView('curated')">Offers</a></li>
+                <li><a onclick="switchActiveView('sarees')">Sarees</a></li>
+                <li><a onclick="switchActiveView('womens')">Womens Wear</a></li>
+                <li><a onclick="switchActiveView('mens')">Mens Wear</a></li>
+                <li><a onclick="switchActiveView('shop')">Shop Online</a></li>
+                <li><a onclick="switchActiveView('blog')">Blog</a></li>
+                <li><a onclick="switchActiveView('about')">About</a></li>
+                <li><a onclick="switchActiveView('contact')">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <button class="action-icon-btn" onclick="toggleInterfaceTheme()" aria-label="Toggle Theme Layout">
                     <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
-                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open Menu">
+                <button class="action-icon-btn" onclick="toggleCartSlidePanel()" aria-label="Open Cart System">
+                    <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <div class="cart-count" id="dom-cart-indicator">0</div>
+                </button>
+                <button class="hamburger" onclick="toggleResponsiveMenu()" aria-label="Toggle Layout Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="view-view hero-split active" id="view-home">
-        <div class="hero-info">
-            <h4 id="home-tag">Wholesale Price @ Retail Showroom</h4>
-            <h1 id="home-title">The Ultimate Heritage Luxury Experience</h1>
-            <p id="home-desc">Step into the absolute standard of fine clothing. From timeless heritage wedding silk sarees to pristine, modern custom-tailored men's blazers, we bring you exquisite craftsmanship without compromise.</p>
-            <div class="action-cluster">
-                <button class="luxury-btn" onclick="switchView('silk')">Explore Silk Collection</button>
-                <button class="luxury-btn secondary" onclick="switchView('mens')">Tailored Suits</button>
+    <main class="workspace-view split-hero-grid active" id="view-home">
+        <div class="hero-text-frame">
+            <h4 id="dom-home-tag">Wholesale Price @ Retail Showroom</h4>
+            <h1 id="dom-home-title">The Ultimate Heritage Luxury Experience</h1>
+            <p id="dom-home-desc">Step into the absolute standard of fine luxury garments. Discover exquisite masterwork catalog collections tailored completely to look magnificent across your landmark celebratory occasions.</p>
+            <div class="interactive-btn-cluster">
+                <button class="luxury-action-btn" onclick="switchActiveView('sarees')">Explore Sarees</button>
+                <button class="luxury-action-btn alt-style" onclick="switchActiveView('mens')">Tailored Clothing</button>
             </div>
         </div>
-        <div class="hero-canvas-frame">
-            <img id="img-home" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Luxury Display">
+        <div class="hero-media-wrapper">
+            <img id="dom-home-img" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="RSR Store Welcome Image">
         </div>
     </main>
 
-    <section class="view-view" id="view-silk">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 32px; letter-spacing: 2px;">Heritage Silk Sarees</h2>
-            <p style="color: var(--text-secondary); margin-top: 10px;">Authentic weaves, golden brocades, and ceremonial masterpiece silks.</p>
+    <section class="workspace-view" id="view-curated">
+        <div class="view-header-block">
+            <h2>Exclusive Store Offers</h2>
+            <p>Premium value choices optimized across wholesale production lines directly for our shoppers.</p>
         </div>
-        <div class="catalog-matrix">
-            <div class="catalog-card">
-                <img id="img-silk1" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80" alt="Saree 1">
-                <div class="catalog-meta"><h3>Pure Kanchipuram Silk</h3><p>Premium Luxury Edition</p></div>
-            </div>
-            <div class="catalog-card">
-                <img id="img-silk2" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Saree 2">
-                <div class="catalog-meta"><h3>Banarasi Brocade</h3><p>Pure Zari Weave</p></div>
-            </div>
-        </div>
+        <div class="universal-product-matrix" id="matrix-offers"></div>
     </section>
 
-    <section class="view-view" id="view-mens">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 32px; letter-spacing: 2px;">Premium Men's Wear</h2>
-            <p style="color: var(--text-secondary); margin-top: 10px;">Masterfully sculpted blazers, ceremony sherwanis, and luxury textiles.</p>
+    <section class="workspace-view" id="view-sarees">
+        <div class="view-header-block">
+            <h2>Heritage Saree Palace</h2>
+            <p>Pure Kanchipuram, Banarasi zari brocades, and luxury wedding statements crafted across generations.</p>
         </div>
-        <div class="catalog-matrix">
-            <div class="catalog-card">
-                <img id="img-men1" src="https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80" alt="Men 1">
-                <div class="catalog-meta"><h3>Imperial Tailored Blazer</h3><p>Premium Slim Cut</p></div>
-            </div>
-            <div class="catalog-card">
-                <img id="img-men2" src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80" alt="Men 2">
-                <div class="catalog-meta"><h3>Royal Celebration Sherwani</h3><p>Heritage Weave</p></div>
-            </div>
-        </div>
+        <div class="universal-product-matrix" id="matrix-sarees"></div>
     </section>
 
-    <section class="view-view" id="view-womens">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 32px; letter-spacing: 2px;">Designer Women's Wear</h2>
-            <p style="color: var(--text-secondary); margin-top: 10px;">Contemporary bridal lehengas, fusion wear, and festive garments.</p>
+    <section class="workspace-view" id="view-womens">
+        <div class="view-header-block">
+            <h2>Designer Women's Couture</h2>
+            <p>Elegant hand-embroidered bridal lehengas, festive suits, and contemporary masterwork fashion statements.</p>
         </div>
-        <div class="catalog-matrix">
-            <div class="catalog-card">
-                <img id="img-women1" src="https://images.unsplash.com/photo-1583391265517-35bbdba01229?auto=format&fit=crop&w=600&q=80" alt="Women 1">
-                <div class="catalog-meta"><h3>Designer Lehenga Choli</h3><p>Hand-embroidered Premium</p></div>
-            </div>
-        </div>
+        <div class="universal-product-matrix" id="matrix-womens"></div>
     </section>
 
-    <section class="view-view hero-split" id="view-about">
-        <div class="hero-info">
-            <h4>Our Legacy</h4>
-            <h2 style="font-size:36px; margin-bottom:20px;">Crafting High-End Showroom Heritage</h2>
+    <section class="workspace-view" id="view-mens">
+        <div class="view-header-block">
+            <h2>Premium Men's Collections</h2>
+            <p>Imperial custom-tailored suits, signature farewell blazers, and classic traditional luxury sherwanis.</p>
+        </div>
+        <div class="universal-product-matrix" id="matrix-mens"></div>
+    </section>
+
+    <section class="workspace-view" id="view-shop">
+        <div class="view-header-block">
+            <h2>Omnichannel Digital Showroom</h2>
+            <p>Reserve elite pieces securely. Pick up items inside our flagship store or select direct door delivery options.</p>
+        </div>
+        <div class="universal-product-matrix" id="matrix-shop"></div>
+    </section>
+
+    <section class="workspace-view" id="view-blog">
+        <div class="view-header-block">
+            <h2>The RSR Style Journal</h2>
+            <p>Insider reports on authentic textile matching, bridal saree trends, and bespoke gentleman suit parameters.</p>
+        </div>
+        <div class="universal-product-matrix" id="matrix-blog"></div>
+    </section>
+
+    <section class="workspace-view split-hero-grid" id="view-about">
+        <div class="hero-text-frame">
+            <h4>Our Showroom Legacy</h4>
+            <h2 style="font-size: 38px; margin-bottom: 20px;">Curating High-End Textile Perfection</h2>
             <p>RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.</p>
         </div>
-        <div class="hero-canvas-frame">
-            <img id="img-about" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Our Store">
+        <div class="hero-media-wrapper">
+            <img id="dom-about-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Flagship Architecture View">
         </div>
     </section>
 
-    <nav class="hub-dock">
-        <a href="https://wa.me/9108041156897" target="_blank" class="dock-item" title="WhatsApp Connect">
+    <section class="workspace-view" id="view-contact">
+        <div class="view-header-block">
+            <h2>Establish Contact Protocols</h2>
+            <p>Reach out directly to verify fit layouts, track items, or request direct wedding consultancy suites.</p>
+        </div>
+        <div class="contact-grid-wrapper">
+            <div class="form-card">
+                <form id="contact-transmission-form" onsubmit="executeEmailJsTransmission(event)">
+                    <div class="form-group-node">
+                        <label>Your Complete Name</label>
+                        <input type="text" required placeholder="E.g., Anand Kumar">
+                    </div>
+                    <div class="form-group-node">
+                        <label>Electronic Email ID</label>
+                        <input type="email" required placeholder="name@domain.com">
+                    </div>
+                    <div class="form-group-node">
+                        <label>Message Requirements</label>
+                        <textarea rows="5" required placeholder="Describe item codes or fittings custom parameters requested..."></textarea>
+                    </div>
+                    <button type="submit" class="luxury-action-btn" style="width: 100%;">Submit Message Gateway</button>
+                </form>
+            </div>
+            <div class="info-meta-row">
+                <div class="info-meta-card">
+                    <h4>Direct Voice Assistance</h4>
+                    <p>08041156897 / 08041162825</p>
+                </div>
+                <div class="info-meta-card">
+                    <h4>Electronic Mailing Node</h4>
+                    <p>info@rsrsilksareepalace.com</p>
+                </div>
+                <div class="info-meta-card">
+                    <h4>Flagship Showroom Coordinate</h4>
+                    <p>61, Besides St. Pius Church, Kammanahalli Main Rd, Bangalore - 560084, Karnataka, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="workspace-view" id="view-checkout">
+        <div class="view-header-block">
+            <h2>Finalize Checkout Manifest</h2>
+            <p>Complete execution parameters. Pay upon store collection pickup or choose home dispatch delivery options.</p>
+        </div>
+        <div style="max-width: 600px; margin: 0 auto;" class="form-card">
+            <form onsubmit="executeOrderManifestPlacement(event)">
+                <div class="form-group-node">
+                    <label>Fulfillment Category Protocol</label>
+                    <select id="checkout-fulfillment">
+                        <option value="pickup">Flagship Store Counter Pickup (COD - Cash/Card at Store)</option>
+                        <option value="delivery">Direct Home Address Dispatch Delivery (Cash on Delivery)</option>
+                    </select>
+                </div>
+                <div class="form-group-node">
+                    <label>Fulfillment Destination Address (Leave blank for Store Pickup)</label>
+                    <textarea id="checkout-address" rows="3" placeholder="Enter complete home shipping address line mapping if delivery is selected..."></textarea>
+                </div>
+                <button type="submit" class="luxury-action-btn" style="width: 100%;">Place Final Showroom Order</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="cart-slide-panel" id="dom-cart-panel">
+        <div class="cart-header">
+            <h3 style="font-size: 20px;">Your Cart</h3>
+            <button onclick="toggleCartSlidePanel()" style="background: transparent; border: none; font-size: 24px; cursor: pointer; color: var(--text-primary);">&times;</button>
+        </div>
+        <div class="cart-items-container" id="dom-cart-rows"></div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="dom-cart-sum">₹0</span>
+            </div>
+            <button class="luxury-action-btn" style="width: 100%;" onclick="routeToCheckoutView()">Proceed to Checkout Manifest</button>
+        </div>
+    </div>
+
+    <div class="chat-slide-frame" id="dom-chat-panel">
+        <div class="chat-panel-header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="pulse-core"></div>
+                <strong style="font-size: 14px; letter-spacing: 1px;">RSR SMART CHAT ASSISTANT</strong>
+            </div>
+            <button onclick="toggleChatPanelSlide()" style="background: transparent; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
+        </div>
+        <div class="chat-stream" id="dom-chat-stream">
+            <div class="chat-bubble bot">Hello! Welcome to RSR Family Store Smart Chat System. This is an operational live prototype. Type below to query catalog fits, ask for sarees availability, or speak with our sales division. All system responses track securely.</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" id="dom-chat-input" placeholder="Type message parameters here..." onkeydown="if(event.key === 'Enter') handleUserChatMessageSubmit()">
+            <button class="chat-send-btn" onclick="handleUserChatMessageSubmit()">Send</button>
+        </div>
+    </div>
+
+    <nav class="persistent-dock-hub">
+        <a href="https://wa.me/9108041156897" target="_blank" class="dock-anchor-node">
             <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
             <span>WhatsApp</span>
         </a>
-        <a href="https://www.instagram.com/" target="_blank" class="dock-item" title="Instagram Profile">
+        <a href="https://www.instagram.com/" target="_blank" class="dock-anchor-node">
             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             <span>Instagram</span>
         </a>
-        <a href="https://maps.google.com" target="_blank" class="dock-item" title="Showroom Location Pin">
+        <a href="https://maps.app.goo.gl/96uGscxby2wPcoQ9A" target="_blank" class="dock-anchor-node">
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             <span>Showroom Map</span>
         </a>
     </nav>
 
-    <div class="ai-fab" onclick="alert('RSR Smart Chat Assistant Interface Online.')">
-        <div class="pulse-light"></div>
+    <div class="ai-fab-anchor" onclick="toggleChatPanelSlide()">
+        <div class="pulse-core"></div>
         <span>Smart Chat Active</span>
     </div>
 
-    <script>
-        function loadConfiguredData() {
-            const data = localStorage.getItem('rsr_luxury_config');
-            if (!data) return;
-            try {
-                const config = JSON.parse(data);
-                
-                // Content Node Injections
-                if (config.marquee) {
-                    document.getElementById('marquee-node').textContent = `${config.marquee} • ${config.marquee} • `;
-                }
-                if (config.homeTag) document.getElementById('home-tag').textContent = config.homeTag;
-                if (config.homeTitle) document.getElementById('home-title').textContent = config.homeTitle;
-                if (config.homeDesc) document.getElementById('home-desc').textContent = config.homeDesc;
+    <footer>
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>© 2026 RSR Family Store & Saree Palace. All Rights Reserved. Optimized Architectural Layout Canvas.</div>
+            <div>Designed with Pride for Bengaluru Luxury Retail Landscapes.</div>
+        </div>
+    </footer>
 
-                // Image Asset Node Syncs
-                if (config.imgHome) document.getElementById('img-home').src = config.imgHome;
-                if (config.imgSilk1) document.getElementById('img-silk1').src = config.imgSilk1;
-                if (config.imgSilk2) document.getElementById('img-silk2').src = config.imgSilk2;
-                if (config.imgMen1) document.getElementById('img-men1').src = config.imgMen1;
-                if (config.imgMen2) document.getElementById('img-men2').src = config.imgMen2;
-                if (config.imgWomen1) document.getElementById('img-women1').src = config.imgWomen1;
-                if (config.imgAbout) document.getElementById('img-about').src = config.imgAbout;
-            } catch (e) { console.error("Configuration mapping engine fault:", e); }
+    <script>
+        // Global Local Storage Data Struct Initialization Engine
+        let internalCartArray = [];
+        const catalogGeneratorEngineData = {
+            offers: [
+                {id: 'off1', name: 'Grand Silk Festive Deal - Combo pack', price: 12500, img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'},
+                {id: 'off2', name: 'Ceremonial Suit Blazer Combo Set', price: 8500, img: 'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80'}
+            ],
+            sarees: [],
+            womens: [],
+            mens: [],
+            shop: [],
+            blog: [
+                {id: 'bl1', name: 'Authentic Weaving Mechanics of pure Silk Zari Threads', price: 'Read Guide', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80'},
+                {id: 'bl2', name: 'The Perfect Fit Parameter Selection for Farewell Luxury Blazers', price: 'Read Guide', img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80'}
+            ]
+        };
+
+        // Populate catalog generation dynamically across arrays
+        const luxuryImageryPlaceholders = [
+            'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1583391265517-35bbdba01229?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80'
+        ];
+
+        for(let idx=1; idx<=8; idx++) {
+            catalogGeneratorEngineData.sarees.push({id: `sar_${idx}`, name: `Heritage Kanchipuram Masterpiece Saree Variant - 0${idx}`, price: 4500 + (idx*1200), img: luxuryImageryPlaceholders[(idx-1)%6]});
+            catalogGeneratorEngineData.womens.push({id: `wom_${idx}`, name: `Designer Bridal Lehenga Set Collection - Variant Premium 0${idx}`, price: 8500 + (idx*2500), img: luxuryImageryPlaceholders[(idx+1)%6]});
+            catalogGeneratorEngineData.mens.push({id: `men_${idx}`, name: `Imperial Tailored Ceremony Executive Tux Blazer Suit - Variant 0${idx}`, price: 6500 + (idx*1800), img: luxuryImageryPlaceholders[(idx+2)%6]});
+            catalogGeneratorEngineData.shop.push({id: `shp_${idx}`, name: `Showroom Premium Stock Reserve Unit - Item Flagship SKU 0${idx}`, price: 3000 + (idx*1500), img: luxuryImageryPlaceholders[(idx+3)%6]});
         }
 
-        function switchView(viewId) {
-            document.querySelectorAll('.view-view').forEach(v => v.classList.remove('active'));
+        function buildDataMatrixDomGrids() {
+            Object.keys(catalogGeneratorEngineData).forEach(key => {
+                const container = document.getElementById(`matrix-${key}`);
+                if (!container) return;
+                container.innerHTML = '';
+                catalogGeneratorEngineData[key].forEach(item => {
+                    const isBlog = typeof item.price === 'string';
+                    container.innerHTML += `
+                        <div class="product-card-node">
+                            <img id="img-${item.id}" src="${item.img}" alt="${item.name}">
+                            <div class="product-card-meta">
+                                <h3>${item.name}</h3>
+                                <div class="price-tag">${isBlog ? item.price : '₹' + item.price.toLocaleString('en-IN')}</div>
+                                ${isBlog ? `<button class="luxury-action-btn alt-style" style="padding:10px 20px; font-size:11px;" onclick="alert('Style article loading framework node...')">Read Article</button>` : `<button class="luxury-action-btn" style="padding:10px 20px; font-size:11px;" onclick="addInventoryItemToCart('${item.id}', '${item.name.replace(/'/g, "\\'")}', ${item.price}, 'img-${item.id}')">Add To Manifest</button>`}
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        function loadConfiguredData() {
+            const cacheKeyData = localStorage.getItem('rsr_luxury_config');
+            if (!cacheKeyData) {
+                // Initialize default text bindings if empty cache state
+                document.getElementById('dom-marquee').textContent = "Exclusive Festive Collections Now Live • Wholesale Price @ Retail Showroom • Premium Tailoring & Luxury Apparel • ";
+                return;
+            }
+            try {
+                const config = JSON.parse(cacheKeyData);
+                if (config.marquee) document.getElementById('dom-marquee').textContent = `${config.marquee} • ${config.marquee} • `;
+                if (config.homeTag) document.getElementById('dom-home-tag').textContent = config.homeTag;
+                if (config.homeTitle) document.getElementById('dom-home-title').textContent = config.homeTitle;
+                if (config.homeDesc) document.getElementById('dom-home-desc').textContent = config.homeDesc;
+                if (config.imgHome) document.getElementById('dom-home-img').src = config.imgHome;
+                if (config.imgAbout) document.getElementById('dom-about-img').src = config.imgAbout;
+
+                // Sync custom admin overrides inside arrays if present
+                Object.keys(config).forEach(key => {
+                    if (key.startsWith('imgSilk') || key.startsWith('imgMen') || key.startsWith('imgWomen')) {
+                        const elementNode = document.getElementById(key.replace('imgSilk', 'img-sar_').replace('imgMen', 'img-men_').replace('imgWomen', 'img-wom_'));
+                        if (elementNode) elementNode.src = config[key];
+                    }
+                });
+            } catch (err) { console.error("Error executing cache runtime sync:", err); }
+        }
+
+        function switchActiveView(viewId) {
+            document.querySelectorAll('.workspace-view').forEach(v => {
+                v.classList.remove('active');
+                v.classList.remove('grid-active');
+            });
+            
             const selectedView = document.getElementById(`view-${viewId}`);
-            if (selectedView) selectedView.classList.add('active');
+            if (selectedView) {
+                if (viewId === 'home' || viewId === 'about' || viewId === 'contact') {
+                    selectedView.classList.add('split-hero-grid', 'active');
+                } else {
+                    selectedView.classList.add('active');
+                }
+            }
 
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            const activeLink = document.querySelector(`.nav-links a[onclick="switchView('${viewId}')"]`);
-            if (activeLink) activeLink.classList.add('active');
+            const matchedLinkNode = document.querySelector(`.nav-links a[onclick="switchActiveView('${viewId}')"]`);
+            if (matchedLinkNode) matchedLinkNode.classList.add('active');
+            document.getElementById('dom-menu-links').classList.remove('mobile-active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function toggleInterfaceTheme() {
+            const trackingNode = document.documentElement.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', trackingNode === 'dark' ? 'light' : 'dark');
+        }
+
+        function toggleResponsiveMenu() {
+            document.getElementById('dom-menu-links').classList.toggle('mobile-active');
+        }
+
+        function toggleCartSlidePanel() {
+            document.getElementById('dom-cart-panel').classList.toggle('open');
+        }
+
+        function toggleChatPanelSlide() {
+            document.getElementById('dom-chat-panel').classList.toggle('open');
+        }
+
+        function handleUserChatMessageSubmit() {
+            const inputField = document.getElementById('dom-chat-input');
+            const stream = document.getElementById('dom-chat-stream');
+            if(!inputField.value.trim()) return;
+
+            const userText = inputField.value;
+            stream.innerHTML += `<div class="chat-bubble user">${userText}</div>`;
+            inputField.value = '';
+            stream.scrollTop = stream.scrollHeight;
+
+            setTimeout(() => {
+                stream.innerHTML += `<div class="chat-bubble bot">Thank you for your transmission. This is a functional design prototype showing custom embedded framework tracking. We will synchronize production live database chat APIs later when integration sequence is authorized.</div>`;
+                stream.scrollTop = stream.scrollHeight;
+            }, 1000);
+        }
+
+        function addInventoryItemToCart(id, name, price, imgNodeId) {
+            const imgSource = document.getElementById(imgNodeId).src;
+            internalCartArray.push({id, name, price, img: imgSource});
+            renderCartUpdates();
+            document.getElementById('dom-cart-panel').classList.add('open');
+        }
+
+        function removeCartElement(index) {
+            internalCartArray.splice(index, 1);
+            renderCartUpdates();
+        }
+
+        function renderCartUpdates() {
+            document.getElementById('dom-cart-indicator').textContent = internalCartArray.length;
+            const container = document.getElementById('dom-cart-rows');
+            const totalSumNode = document.getElementById('dom-cart-sum');
+            container.innerHTML = '';
             
-            document.getElementById('nav-menu').classList.remove('mobile-open');
+            let accumulatedSum = 0;
+            internalCartArray.forEach((item, index) => {
+                accumulatedSum += item.price;
+                container.innerHTML += `
+                    <div class="cart-item-row">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>₹${item.price.toLocaleString('en-IN')}</p>
+                            <button class="cart-remove-btn" onclick="removeCartElement(${index})">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+            totalSumNode.textContent = '₹' + accumulatedSum.toLocaleString('en-IN');
         }
 
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        function routeToCheckoutView() {
+            if (internalCartArray.length === 0) {
+                alert("Your deployment layout cart is empty. Manifest components before checking out!");
+                return;
+            }
+            toggleCartSlidePanel();
+            switchActiveView('checkout');
         }
 
-        function toggleMobileMenu() {
-            document.getElementById('nav-menu').classList.toggle('mobile-open');
+        function executeOrderManifestPlacement(e) {
+            e.preventDefault();
+            const category = document.getElementById('checkout-fulfillment').value;
+            const targetAddress = document.getElementById('checkout-address').value;
+            alert(`Omnichannel Order Placed Successfully! Fulfillment Mode: ${category.toUpperCase()}. We have successfully captured your transaction metadata inside our prototype system framework.`);
+            internalCartArray = [];
+            renderCartUpdates();
+            switchActiveView('home');
+        }
+
+        function executeEmailJsTransmission(e) {
+            e.preventDefault();
+            alert("Email transmission simulation complete! EmailJS structural script nodes are configured ready to process customer messages.");
+            e.target.reset();
         }
 
         window.addEventListener('storage', loadConfiguredData);
-        window.addEventListener('DOMContentLoaded', loadConfiguredData);
-    </style>
+        window.addEventListener('DOMContentLoaded', () => {
+            buildDataMatrixDomGrids();
+            loadConfiguredData();
+        });
+    </script>
 </body>
 </html>

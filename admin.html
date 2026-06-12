@@ -3,154 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSR Luxury Control Panel Engine</title>
+    <title>RSR Core Hub Workspace Dashboard Panel</title>
     <style>
-        body {
-            background: #0f172a;
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            padding: 40px;
-        }
-        .panel-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #1e293b;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        h1 { font-size: 24px; margin-bottom: 8px; color: #e2e8f0; letter-spacing: 0.5px; }
-        p { color: #94a3b8; font-size: 14px; margin-bottom: 30px; }
-        .section-block {
-            border-top: 1px solid #334155;
-            padding-top: 24px;
-            margin-top: 24px;
-        }
-        .section-block h2 { font-size: 16px; margin-bottom: 16px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; }
-        .input-group {
-            margin-bottom: 18px;
-        }
-        label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: #cbd5e1; }
-        input[type="text"], textarea {
-            width: 100%;
-            background: #0f172a;
-            border: 1px solid #475569;
-            padding: 12px;
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        input[type="text"]:focus, textarea:focus {
-            border-color: #38bdf8;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
-        }
-        .save-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .save-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #10b981;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            display: none;
-            animation: slideIn 0.3s ease forwards;
-        }
-        @keyframes slideIn { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        body { background: #0b0f19; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 50px 20px; }
+        .admin-canvas-frame { max-width: 900px; margin: 0 auto; background: #1e293b; padding: 45px; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        h1 { font-size: 26px; color: #f8fafc; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.5px; }
+        p { color: #94a3b8; font-size: 14px; margin-bottom: 40px; }
+        .segment-block { border-top: 1px solid #334155; padding-top: 30px; margin-top: 30px; }
+        .segment-block h2 { font-size: 15px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; font-weight: 600; }
+        .input-wrapper-node { margin-bottom: 22px; }
+        label { display: block; font-size: 13px; font-weight: 500; color: #cbd5e1; margin-bottom: 8px; }
+        input[type="text"], textarea { width: 100%; background: #0f172a; border: 1px solid #475569; padding: 14px; border-radius: 4px; color: #ffffff; font-size: 14px; transition: border-color 0.2s ease; }
+        input[type="text"]:focus, textarea:focus { border-color: #38bdf8; outline: none; }
+        .commit-sync-btn { background: #2563eb; color: #ffffff; border: none; width: 100%; padding: 18px; font-size: 14px; font-weight: 700; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s ease; margin-top: 20px; }
+        .commit-sync-btn:hover { background: #1d4ed8; }
+        .notification-toast { position: fixed; bottom: 30px; right: 30px; background: #10b981; color: #ffffff; padding: 14px 28px; border-radius: 4px; font-size: 14px; font-weight: 600; display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
 
-    <div class="panel-container">
+    <div class="admin-canvas-frame">
         <h1>RSR Core Hub Workspace Dashboard</h1>
-        <p>Modify and sync non-coding data items instantly down to the index.html customer layout canvas.</p>
+        <p>Modify non-technical content data. Save changes to update your luxury storefront view instantly.</p>
 
         <form id="admin-panel-form">
-            <div class="section-block">
-                <h2>1. Banner Navigation Controls</h2>
-                <div class="input-group">
-                    <label>Sleek Infinite Luxury Marquee Text</label>
+            <div class="segment-block">
+                <h2>1. Layout Headers & Announcements</h2>
+                <div class="input-wrapper-node">
+                    <label>Sleek Endless Luxury Marquee Banner Text Content String</label>
                     <input type="text" id="marquee" value="Exclusive Festive Collections Now Live • Wholesale Price @ Retail Showroom • Premium Tailoring & Luxury Apparel">
                 </div>
             </div>
 
-            <div class="section-block">
-                <h2>2. Welcome View Content</h2>
-                <div class="input-group">
-                    <label>Subheading Badge Text</label>
+            <div class="segment-block">
+                <h2>2. Welcome View Layout Configurations</h2>
+                <div class="input-wrapper-node">
+                    <label>Subheading Tag Badge</label>
                     <input type="text" id="homeTag" value="Wholesale Price @ Retail Showroom">
                 </div>
-                <div class="input-group">
+                <div class="input-wrapper-node">
                     <label>Main Showcase Headline Title</label>
                     <input type="text" id="homeTitle" value="The Ultimate Heritage Luxury Experience">
                 </div>
-                <div class="input-group">
-                    <label>Description Paragraph Narrative</label>
-                    <textarea id="homeDesc" rows="3">Step into the absolute standard of fine clothing. From timeless heritage wedding silk sarees to pristine, modern custom-tailored men's blazers, we bring you exquisite craftsmanship without compromise.</textarea>
+                <div class="input-wrapper-node">
+                    <label>Description Narrative Text Block</label>
+                    <textarea id="homeDesc" rows="3">Step into the absolute standard of fine luxury garments. Discover exquisite masterwork catalog collections tailored completely to look magnificent across your landmark celebratory occasions.</textarea>
                 </div>
-                <div class="input-group">
-                    <label>Main Welcome View Image URL</label>
+                <div class="input-wrapper-node">
+                    <label>Welcome View Main Display Image URL Asset Path</label>
                     <input type="text" id="imgHome" value="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80">
                 </div>
             </div>
 
-            <div class="section-block">
-                <h2>3. Gallery & Product Image Matrix</h2>
-                <div class="input-group">
-                    <label>Silk Saree Image 1 URL</label>
+            <div class="segment-block">
+                <h2>3. Production Category Real Images Override</h2>
+                <div class="input-wrapper-node">
+                    <label>Pure Silk Sarees Grid Variant Item 01 Image URL Link</label>
                     <input type="text" id="imgSilk1" value="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80">
                 </div>
-                <div class="input-group">
-                    <label>Silk Saree Image 2 URL</label>
+                <div class="input-wrapper-node">
+                    <label>Brocade Silk Sarees Grid Variant Item 02 Image URL Link</label>
                     <input type="text" id="imgSilk2" value="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80">
                 </div>
-                <div class="input-group">
-                    <label>Mens Wear Suit Image 1 URL</label>
+                <div class="input-wrapper-node">
+                    <label>Imperial Men Suits Custom Blazer Variant Item 01 Image URL Link</label>
                     <input type="text" id="imgMen1" value="https://images.unsplash.com/photo-1593032465175-481da7f4016b?auto=format&fit=crop&w=600&q=80">
                 </div>
-                <div class="input-group">
-                    <label>Mens Wear Suit Image 2 URL</label>
+                <div class="input-wrapper-node">
+                    <label>Traditional Sherwani Men Suit Variant Item 02 Image URL Link</label>
                     <input type="text" id="imgMen2" value="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80">
                 </div>
-                <div class="input-group">
-                    <label>Womens Wear Clothing Image 1 URL</label>
+                <div class="input-wrapper-node">
+                    <label>Designer Bridal Women Wear Variant Item 01 Image URL Link</label>
                     <input type="text" id="imgWomen1" value="https://images.unsplash.com/photo-1583391265517-35bbdba01229?auto=format&fit=crop&w=600&q=80">
                 </div>
-                <div class="input-group">
-                    <label>About Showroom Context Image URL</label>
+                <div class="input-wrapper-node">
+                    <label>Flagship About Heritage Showroom Section Main Image URL Link</label>
                     <input type="text" id="imgAbout" value="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80">
                 </div>
             </div>
 
-            <button type="button" class="save-btn" onclick="syncWorkspaceChanges()">Sync Workspace Changes</button>
+            <button type="button" class="commit-sync-btn" onclick="commitWorkspaceSynchronizationData()">Sync Workspace Changes</button>
         </form>
     </div>
 
-    <div class="toast" id="toast">Data Sync Complete!</div>
+    <div class="notification-toast" id="admin-toast">Data Synchronized Successfully!</div>
 
     <script>
-        function syncWorkspaceChanges() {
-            const configData = {
+        function commitWorkspaceSynchronizationData() {
+            const structuralConfigData = {
                 marquee: document.getElementById('marquee').value,
                 homeTag: document.getElementById('homeTag').value,
                 homeTitle: document.getElementById('homeTitle').value,
@@ -164,21 +105,20 @@
                 imgAbout: document.getElementById('imgAbout').value
             };
             
-            localStorage.setItem('rsr_luxury_config', JSON.stringify(configData));
+            localStorage.setItem('rsr_luxury_config', JSON.stringify(structuralConfigData));
             
-            const toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+            const toastNode = document.getElementById('admin-toast');
+            toastNode.style.display = 'block';
+            setTimeout(() => { toastNode.style.display = 'none'; }, 2500);
         }
 
-        // Auto Load Existing Saved Cache Key
         window.addEventListener('DOMContentLoaded', () => {
-            const existing = localStorage.getItem('rsr_luxury_config');
-            if(existing) {
-                const data = JSON.parse(existing);
-                Object.keys(data).forEach(key => {
-                    const field = document.getElementById(key);
-                    if(field) field.value = data[key];
+            const cachedArrayString = localStorage.getItem('rsr_luxury_config');
+            if (cachedArrayString) {
+                const objectParsed = JSON.parse(cachedArrayString);
+                Object.keys(objectParsed).forEach(key => {
+                    const inputFieldElement = document.getElementById(key);
+                    if (inputFieldElement) inputFieldElement.value = objectParsed[key];
                 });
             }
         });

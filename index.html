@@ -334,7 +334,7 @@
         <div class="marquee-track" id="dom-marquee">Loading premium updates...</div>
     </div>
 
-    <header>
+  <header>
         <div class="nav-container">
             <a href="#" class="brand-logo" onclick="switchActiveView('home')">
                 <span class="logo-main">RSR</span>
@@ -378,7 +378,7 @@
             </div>
         </div>
         <div class="hero-media-wrapper">
-            <img id="dom-home-img" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="RSR Store Welcome Image">
+            <img id="dom-home-img" src="https://raw.githubusercontent.com/m-s-m-2-9/rsr-sample/main/saree1.jpg" alt="RSR Fine Saree Masterwork Feature">
         </div>
     </main>
 
@@ -480,133 +480,134 @@
                 <button type="button" class="tailor-tab-btn" id="tab-btn-visit" onclick="toggleTailorSubSection('visit')">Book Showroom Appointment</button>
             </div>
 
-<form id="tailor-studio-form" onsubmit="processBespokeFormSubmission(event)">
-                    <input type="hidden" id="tailor-submission-mode" value="specs">
+            <form id="tailor-studio-form" onsubmit="processBespokeFormSubmission(event)">
+                <input type="hidden" id="tailor-submission-mode" value="specs">
 
-                    <div class="form-group-node">
-                        <label>Apparel Architecture Archetype</label>
-                        <select id="tailor-apparel-profile">
-                            <option value="Saree Blouse">Heritage Saree Blouse</option>
-                            <option value="Bridal Lehenga">Heavy Elegant Bridal Lehenga</option>
-                            <option value="Imperial Suit">Double-Breasted Corporate Suit</option>
-                            <option value="Luxury Blazer">Sharp Modern Custom Blazer</option>
-                            <option value="Traditional Sherwani">Festive Zari Royal Sherwani</option>
-                        </select>
-                    </div>
+                <div class="form-group-node">
+                    <label>Apparel Architecture Archetype</label>
+                    <select id="tailor-apparel-profile">
+                        <option value="Saree Blouse">Heritage Saree Blouse</option>
+                        <option value="Bridal Lehenga">Heavy Elegant Bridal Lehenga</option>
+                        <option value="Imperial Suit">Double-Breasted Corporate Suit</option>
+                        <option value="Luxury Blazer">Sharp Modern Custom Blazer</option>
+                        <option value="Traditional Sherwani">Festive Zari Royal Sherwani</option>
+                    </select>
+                </div>
 
-                    <div id="tailor-specs-wrapper" class="form-group-node">
-                        <label style="margin-bottom:12px; color:var(--brand-gold);">Body Metrics Configuration (In Inches)</label>
-                        <div class="measurement-inputs-grid">
-                            <div>
-                                <label style="font-size:10px;">Chest / Bust</label>
-                                <input type="number" placeholder="38" step="0.1">
-                            </div>
-                            <div>
-                                <label style="font-size:10px;">Waist Line</label>
-                                <input type="number" placeholder="34" step="0.1">
-                            </div>
-                            <div>
-                                <label style="font-size:10px;">Shoulder Width</label>
-                                <input type="number" placeholder="17" step="0.1">
-                            </div>
-                            <div>
-                                <label style="font-size:10px;">Sleeve Length</label>
-                                <input type="number" placeholder="25" step="0.1">
-                            </div>
+                <div id="tailor-specs-wrapper" class="form-group-node">
+                    <label style="margin-bottom:12px; color:var(--brand-gold);">Body Metrics Configuration (In Inches)</label>
+                    <div class="measurement-inputs-grid">
+                        <div>
+                            <label style="font-size:10px;">Chest / Bust</label>
+                            <input type="number" placeholder="38" step="0.1">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Waist Line</label>
+                            <input type="number" placeholder="34" step="0.1">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Shoulder Width</label>
+                            <input type="number" placeholder="17" step="0.1">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Sleeve Length</label>
+                            <input type="number" placeholder="25" step="0.1">
                         </div>
                     </div>
+                </div>
 
-                    <div id="tailor-visit-wrapper" class="form-group-node" style="display:none;">
-                        <label style="margin-bottom:12px; color:var(--brand-gold);">Consultation Appointment Grid</label>
-                        <div class="contact-grid-wrapper" style="margin-top:0; gap:20px; grid-template-columns: 1fr 1fr;">
-                            <div>
-                                <label style="font-size:10px;">Preferred Date</label>
-                                <input type="date">
-                            </div>
-                            <div>
-                                <label style="font-size:10px;">Preferred Time Window Slot</label>
-                                <select style="padding:14px;">
-                                    <option>Morning Slot (10:30 AM - 1:00 PM)</option>
-                                    <option>Afternoon Slot (2:00 PM - 5:30 PM)</option>
-                                    <option>Evening Slot (6:00 PM - 8:30 PM)</option>
-                                </select>
-                            </div>
+                <div id="tailor-visit-wrapper" class="form-group-node" style="display:none;">
+                    <label style="margin-bottom:12px; color:var(--brand-gold);">Consultation Appointment Grid</label>
+                    <div class="contact-grid-wrapper" style="margin-top:0; gap:20px; grid-template-columns: 1fr 1fr;">
+                        <div>
+                            <label style="font-size:10px;">Preferred Date</label>
+                            <input type="date">
+                        </div>
+                        <div>
+                            <label style="font-size:10px;">Preferred Time Window Slot</label>
+                            <select style="padding:14px;">
+                                <option>Morning Slot (10:30 AM - 1:00 PM)</option>
+                                <option>Afternoon Slot (2:00 PM - 5:30 PM)</option>
+                                <option>Evening Slot (6:00 PM - 8:30 PM)</option>
+                            </select>
                         </div>
                     </div>
+                </div>
 
+                <div class="form-group-node">
+                    <label>Special Instructions & Material Preferences</label>
+                    <textarea rows="4" placeholder="Mention preferred padding frameworks, interior silk profile canvas linings, heavy border placement patterns, specific trim styles, or edge customizations here..."></textarea>
+                </div>
+
+                <button type="submit" class="luxury-action-btn" style="width: 100%;">Secure Custom Configuration Blueprint</button>
+                
+                <div class="tailor-notif-box" id="tailor-success-toast" style="display: none;">
+                    Your bespoke blueprint design configuration has been successfully saved to our studio registry database!
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="workspace-view" id="view-blog">
+        <div class="view-header-block">
+            <h2>The RSR Style Journal</h2>
+            <p>Insider reports on authentic textile matching, bridal saree trends, and bespoke gentleman suit parameters.</p>
+        </div>
+        <div class="universal-product-matrix" id="matrix-blog"></div>
+    </section>
+
+    <section class="workspace-view split-hero-grid" id="view-about">
+        <div class="hero-text-frame">
+            <h4>Our Showroom Legacy</h4>
+            <h2 style="font-size: 38px; margin-bottom: 20px;">Curating High-End Textile Perfection</h2>
+            <p>RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.</p>
+        </div>
+        <div class="hero-media-wrapper small-photo-wrapper">
+            <img id="dom-about-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Flagship Architecture View">
+        </div>
+    </section>
+
+    <section class="workspace-view" id="view-contact">
+        <div class="view-header-block">
+            <h2>Establish Contact Protocols</h2>
+            <p>Reach out directly to verify fit layouts, track items, or request direct wedding consultancy suites.</p>
+        </div>
+        <div class="contact-grid-wrapper">
+            <div class="form-card">
+                <form id="contact-transmission-form" onsubmit="executeEmailJsTransmission(event)">
                     <div class="form-group-node">
-                        <label>Special Instructions & Material Preferences</label>
-                        <textarea rows="4" placeholder="Mention preferred padding frameworks, interior silk profile canvas linings, heavy border placement patterns, specific trim styles, or edge customizations here..."></textarea>
+                        <label>Your Complete Name</label>
+                        <input type="text" required placeholder="E.g., Anand Kumar">
                     </div>
-
-                    <button type="submit" class="luxury-action-btn" style="width: 100%;">Secure Custom Configuration Blueprint</button>
-                    
-                    <div class="tailor-notif-box" id="tailor-success-toast" style="display: none;">
-                        Your bespoke blueprint design configuration has been successfully saved to our studio registry database!
+                    <div class="form-group-node">
+                        <label>Electronic Email ID</label>
+                        <input type="email" required placeholder="name@domain.com">
                     </div>
+                    <div class="form-group-node">
+                        <label>Message Requirements</label>
+                        <textarea rows="5" required placeholder="Describe item codes or fittings custom parameters requested..."></textarea>
+                    </div>
+                    <button type="submit" class="luxury-action-btn" style="width: 100%;">Submit Message Gateway</button>
                 </form>
             </div>
-        </section>
-
-        <section class="workspace-view" id="view-blog">
-            <div class="view-header-block">
-                <h2>The RSR Style Journal</h2>
-                <p>Insider reports on authentic textile matching, bridal saree trends, and bespoke gentleman suit parameters.</p>
-            </div>
-            <div class="universal-product-matrix" id="matrix-blog"></div>
-        </section>
-
-        <section class="workspace-view split-hero-grid" id="view-about">
-            <div class="hero-text-frame">
-                <h4>Our Showroom Legacy</h4>
-                <h2 style="font-size: 38px; margin-bottom: 20px;">Curating High-End Textile Perfection</h2>
-                <p>RSR Family Store stands as an iconic pillar of quality fashion. Renowned originally for curated luxury selections, our flagship destination offers customers fine apparel, premium personalized attention, and unforgettable shopping journeys for all life events.</p>
-            </div>
-            <div class="hero-media-wrapper small-photo-wrapper">
-                <img id="dom-about-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Flagship Architecture View">
-            </div>
-        </section>
-
-        <section class="workspace-view" id="view-contact">
-            <div class="view-header-block">
-                <h2>Establish Contact Protocols</h2>
-                <p>Reach out directly to verify fit layouts, track items, or request direct wedding consultancy suites.</p>
-            </div>
-            <div class="contact-grid-wrapper">
-                <div class="form-card">
-                    <form id="contact-transmission-form" onsubmit="executeEmailJsTransmission(event)">
-                        <div class="form-group-node">
-                            <label>Your Complete Name</label>
-                            <input type="text" required placeholder="E.g., Anand Kumar">
-                        </div>
-                        <div class="form-group-node">
-                            <label>Electronic Email ID</label>
-                            <input type="email" required placeholder="name@domain.com">
-                        </div>
-                        <div class="form-group-node">
-                            <label>Message Requirements</label>
-                            <textarea rows="5" required placeholder="Describe item codes or fittings custom parameters requested..."></textarea>
-                        </div>
-                        <button type="submit" class="luxury-action-btn" style="width: 100%;">Submit Message Gateway</button>
-                    </form>
+            <div class="info-meta-row">
+                <div class="info-meta-card">
+                    <h4>Direct Voice Assistance</h4>
+                    <p>08041156897 / 08041162825</p>
                 </div>
-                <div class="info-meta-row">
-                    <div class="info-meta-card">
-                        <h4>Direct Voice Assistance</h4>
-                        <p>08041156897 / 08041162825</p>
-                    </div>
-                    <div class="info-meta-card">
-                        <h4>Electronic Mailing Node</h4>
-                        <p>info@rsrsilksareepalace.com</p>
-                    </div>
-                    <div class="info-meta-card">
-                        <h4>Flagship Showroom Coordinate</h4>
-                        <p>61, Besides St. Pius Church, Kammanahalli Main Rd, Bangalore - 560084, Karnataka, India</p>
-                    </div>
+                <div class="info-meta-card">
+                    <h4>Electronic Mailing Node</h4>
+                    <p>info@rsrsilksareepalace.com</p>
+                </div>
+                <div class="info-meta-card">
+                    <h4>Flagship Showroom Coordinate</h4>
+                    <p>61, Besides St. Pius Church, Kammanahalli Main Rd, Bangalore - 560084, Karnataka, India</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
+    
         <section class="workspace-view" id="view-checkout">
             <div class="view-header-block">
                 <h2>Finalize Checkout Manifest</h2>
